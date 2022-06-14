@@ -1,0 +1,204 @@
+﻿<Window x:Class="Dashboard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dashboard"
+        xmlns:viewModel="clr-namespace:Dashboard.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="700" 
+        Width="1200"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None">
+
+   <Window.DataContext>
+      <viewModel:MainViewModel/>
+   </Window.DataContext>
+
+   <Border Background="#14151f"
+           CornerRadius="40">
+      <Grid>
+         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+         </Grid.RowDefinitions>
+
+         <!-- Top panel -->
+         <Grid Background="#14151f"
+               MouseDown="TopPanel_MouseDown"
+               Width="1125">
+
+            <Button x:Name="CloseBtn"
+                    Content="❌"
+                    Width="40"
+                    HorizontalAlignment="Right"
+                    BorderThickness="0"
+                    Foreground="Red"
+                    Style="{StaticResource TopPanelBtn}"
+                    Click="CloseBtn_Click"/>
+
+            <Button x:Name="MinimizeBtn"
+                    Content="_"
+                    Width="40"
+                    Height="60"
+                    FontSize="30"
+                    HorizontalAlignment="Right"
+                    Margin="0,-25,40,0"
+                    BorderThickness="0"
+                    Style="{StaticResource TopPanelBtn}"
+                    Click="MinimizeBtn_Click"/>
+         </Grid>
+
+         <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="250"/>
+               <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Menu -->
+            <Grid Background="#14151f"
+                  Height="625"
+                  Width="260"
+                  VerticalAlignment="Top"
+>
+
+               <Grid.RowDefinitions>
+                  <RowDefinition Height="90"/>
+                  <RowDefinition Height="300"/>
+                  <RowDefinition/>
+               </Grid.RowDefinitions>
+
+
+
+               <!-- Header -->
+               <TextBlock Text="🍔 Burger"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="Orange"
+                    FontSize="35"
+                    FontFamily="Fonts/#JosefinSans"
+                    FontWeight="Black"
+                          >
+
+                  <TextBlock.Effect>
+                     <DropShadowEffect BlurRadius="10"
+                                       ShadowDepth="1"
+                                       Direction="-90"
+                                       Color="Orange"/>
+                  </TextBlock.Effect>
+               </TextBlock>
+
+
+               <!-- Navigation menu -->
+               <Grid Grid.Column="1" Grid.Row="1">
+
+                  <StackPanel Width="250"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" 
+                           Margin="0,25,0,35">
+
+                     <RadioButton Content="  💲      |   SPRZEDAŻ"
+                         Height="50"
+                         FontSize="17"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                         Style="{StaticResource MenuButtonTheme}" 
+                         Command="{Binding SalesCommand}"/>
+
+                     <RadioButton Content=" 🛒    |    KOSZYK"
+                         Height="50"
+                         FontSize="17"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                         Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding CartCommand}"/>
+
+                     <RadioButton Content=" ✔    |    RAPORT"
+                         Height="50"
+                         FontSize="17"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                         Style="{StaticResource MenuButtonTheme}"
+                                  Command="{Binding RaportCommand}"/>
+
+                     <RadioButton Content=" 🚚    |    DOSTAWY"
+                         Height="50"
+                         FontSize="17"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                         Style="{StaticResource MenuButtonTheme}"
+                                  Command="{Binding DeliveryCommand}"/>
+
+
+                  </StackPanel>
+               </Grid>
+
+
+               <!-- Log out button -->
+               <Grid Grid.Row="2"
+                     Height="200"
+                     VerticalAlignment="Top">
+
+
+                  <Button x:Name="LogOutBtn"
+                       VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Margin="0,-120,0,0"
+                       Height="40"
+                       Width="170"
+                          Content="WYLOGUJ"
+                          FontSize="17"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                       Style="{StaticResource ButtonHoverTheme_Green}"
+                          Click="LogOutBtn_Click">
+
+                  </Button>
+
+                  <!--Admin button-->
+                  <Button x:Name="AdminPanelBtn"
+                       VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Margin="0,60,0,0"
+                       Height="40"
+                       Width="170"
+                          Content="ZARZĄDZAJ"
+                          FontSize="17"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                       Style="{StaticResource ButtonHoverTheme_Red}"
+                          Click="AdminPanelBtn_Click"
+                          IsEnabled="True"
+                          Visibility="Hidden"/>
+
+               </Grid>
+            </Grid>
+
+            <!--Content-->
+            <Grid Grid.Row="1"
+                  Grid.Column="1">
+
+               <Border BorderBrush="Black"
+                       BorderThickness="2.5,0,0,0"
+                       Height="580"
+                       Margin="15,0,0,90"
+                       />
+
+               <Image Source="Images/brgmain.png"
+                      Opacity="1"
+                      RenderOptions.BitmapScalingMode="Fant"
+                      />
+            </Grid>
+
+            <ContentControl Grid.Column="1"
+                            Content="{Binding CurrentView}" 
+                            Margin="20,0,15,15"/>
+         </Grid>
+      </Grid>
+   </Border>
+
+</Window>

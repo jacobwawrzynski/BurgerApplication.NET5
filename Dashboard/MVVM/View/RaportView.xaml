@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="Dashboard.MVVM.View.RaportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Dashboard.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="630" d:DesignWidth="960">
+
+   <Grid Background="#14151f">
+      <Grid.RowDefinitions>
+         <RowDefinition Height="100"/>
+         <RowDefinition Height="110"/>
+         <RowDefinition/>
+      </Grid.RowDefinitions>
+
+      <DatePicker HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Grid.Column="0"
+                  Grid.Row="0"
+                  Margin="350,0,0,0"
+                  CalendarStyle="{StaticResource DatePickerCalendarStyle}"/>
+
+      <DatePicker HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Grid.Column="1"
+                  Grid.Row="0"
+                  Margin="-350,0,0,0"
+                  CalendarStyle="{StaticResource DatePickerCalendarStyle}"
+                  />
+
+
+      <!--Download PDF-->
+      <Button x:Name="DownloadReportPdfBtn"
+              Grid.Row="1"
+                       VerticalAlignment="Center"
+                          HorizontalAlignment="Right"
+                          Margin="0,0,50,0"
+                       Height="60"
+                       Width="250"
+                          Content="RAPORT PDF"
+                          FontSize="25"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                       Style="{StaticResource ButtonHoverTheme_Blue}"
+                          >
+
+      </Button>
+
+      <!--Raport-->
+      <Border Width="850"
+              Grid.Row="2"
+              Grid.ColumnSpan="2"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center"
+                     Height="380"
+                     Margin="0,0,0,0"
+                     >
+
+         <Border.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+               <GradientStop Color="#a9b2c9" Offset="0.1"/>
+               <GradientStop Color="#808ba6" Offset="0.6"/>
+               <GradientStop Color="#49566e" Offset="1"/>
+            </LinearGradientBrush>
+         </Border.Background>
+
+         <Border.Clip>
+            <RectangleGeometry RadiusX="30"
+                                       RadiusY="30"
+                                       Rect="0,0,850,380"/>
+         </Border.Clip>
+
+      </Border>
+
+   </Grid>
+</UserControl>

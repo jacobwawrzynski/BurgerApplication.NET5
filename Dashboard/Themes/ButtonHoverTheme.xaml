@@ -1,0 +1,207 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+   
+   <!--BUTTON WYLOGUJ-->
+   <Style TargetType="{x:Type Button}"
+          x:Key="ButtonHoverTheme_Green">
+      <Setter Property="Background" Value="#003602"/>
+      <Setter Property="Template">
+         <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Button}">
+               <Border Background="{TemplateBinding Background}"
+                       CornerRadius="15"
+                       >
+                  <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+               </Border>
+            </ControlTemplate>
+         </Setter.Value>
+      </Setter>
+      <Setter Property="Foreground" Value="#2ea52c"/>
+      <Style.Triggers>
+         <Trigger Property="IsMouseOver" Value="True">
+            <Setter Property="Cursor" Value="Hand"/>
+         </Trigger>
+         <!-- Animates the button on mouse over. -->
+         <EventTrigger RoutedEvent="Button.MouseEnter">
+            <EventTrigger.Actions>
+               <BeginStoryboard>
+                  <Storyboard>
+                     <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#003602" To="#005c03" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                     <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                     From="#2ea52c" To="White" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                  </Storyboard>
+               </BeginStoryboard>
+            </EventTrigger.Actions>
+         </EventTrigger>
+         <!-- Returns the button when the mouse leaves. -->
+         <EventTrigger RoutedEvent="Button.MouseLeave">
+            <EventTrigger.Actions>
+               <BeginStoryboard>
+                  <Storyboard>
+                     <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#005c03" To="#003602" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                     <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                     From="White" To="#2ea52c" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                  </Storyboard>
+               </BeginStoryboard>
+            </EventTrigger.Actions>
+         </EventTrigger>
+      </Style.Triggers>
+   </Style>
+
+   <!--BUTTON ZARZĄDZAJ-->
+   <Style TargetType="{x:Type Button}"
+          x:Key="ButtonHoverTheme_Red">
+      <Setter Property="Background" Value="#690000"/>
+      <Setter Property="Template">
+         <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Button}">
+               <Border Background="{TemplateBinding Background}"
+                       CornerRadius="15"
+                       >
+                  <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+               </Border>
+            </ControlTemplate>
+         </Setter.Value>
+      </Setter>
+      <Setter Property="Foreground" Value="#ff1c1c"/>
+      <Style.Triggers>
+         <Trigger Property="IsMouseOver" Value="True">
+            <Setter Property="Cursor" Value="Hand"/>
+         </Trigger>
+         <!-- Animates the button on mouse over. -->
+         <EventTrigger RoutedEvent="Button.MouseEnter">
+            <EventTrigger.Actions>
+               <BeginStoryboard>
+                  <Storyboard>
+                     <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#690000" To="#ab0000" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                     <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                     From="#ff1c1c" To="White" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                  </Storyboard>
+               </BeginStoryboard>
+            </EventTrigger.Actions>
+         </EventTrigger>
+         <!-- Returns the button when the mouse leaves. -->
+         <EventTrigger RoutedEvent="Button.MouseLeave">
+            <EventTrigger.Actions>
+               <BeginStoryboard>
+                  <Storyboard>
+                     <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#ab0000" To="#690000" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                     <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                     From="White" To="#ff1c1c" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                  </Storyboard>
+               </BeginStoryboard>
+            </EventTrigger.Actions>
+         </EventTrigger>
+      </Style.Triggers>
+   </Style>
+
+   <!--BUTTON ZALOGUJ-->
+   <Style TargetType="{x:Type Button}"
+          x:Key="ButtonHoverTheme_Orange">
+      <Setter Property="Background" Value="#a66300"/>
+      <Setter Property="Template">
+         <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Button}">
+               <Border Background="{TemplateBinding Background}"
+                       CornerRadius="15"
+                       >
+                  <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+               </Border>
+            </ControlTemplate>
+         </Setter.Value>
+      </Setter>
+      <Setter Property="Foreground" Value="#ff9914"/>
+      <Style.Triggers>
+         <Trigger Property="IsMouseOver" Value="True">
+            <Setter Property="Cursor" Value="Hand"/>
+         </Trigger>
+         <!-- Animates the button on mouse over. -->
+         <EventTrigger RoutedEvent="Button.MouseEnter">
+            <EventTrigger.Actions>
+               <BeginStoryboard>
+                  <Storyboard>
+                     <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#8f5600" To="#e38100" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                     <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                     From="#ff9914" To="White" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                  </Storyboard>
+               </BeginStoryboard>
+            </EventTrigger.Actions>
+         </EventTrigger>
+         <!-- Returns the button when the mouse leaves. -->
+         <EventTrigger RoutedEvent="Button.MouseLeave">
+            <EventTrigger.Actions>
+               <BeginStoryboard>
+                  <Storyboard>
+                     <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#e38100" To="#8f5600" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                     <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                     From="White" To="#ff9914" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                  </Storyboard>
+               </BeginStoryboard>
+            </EventTrigger.Actions>
+         </EventTrigger>
+      </Style.Triggers>
+   </Style>
+   
+   <!--BUTTON POBIERZ-->
+   <Style TargetType="{x:Type Button}"
+          x:Key="ButtonHoverTheme_Blue">
+      <Setter Property="Background" Value="#0043b0"/>
+      <Setter Property="Template">
+         <Setter.Value>
+            <ControlTemplate TargetType="{x:Type Button}">
+               <Border Background="{TemplateBinding Background}"
+                       CornerRadius="15"
+                       >
+                  <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+               </Border>
+            </ControlTemplate>
+         </Setter.Value>
+      </Setter>
+      <Setter Property="Foreground" Value="#5eacff"/>
+      <Style.Triggers>
+         <Trigger Property="IsMouseOver" Value="True">
+            <Setter Property="Cursor" Value="Hand"/>
+         </Trigger>
+         <!-- Animates the button on mouse over. -->
+         <EventTrigger RoutedEvent="Button.MouseEnter">
+            <EventTrigger.Actions>
+               <BeginStoryboard>
+                  <Storyboard>
+                     <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#0043b0" To="#0471de" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                     <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                     From="#5eacff" To="White" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                  </Storyboard>
+               </BeginStoryboard>
+            </EventTrigger.Actions>
+         </EventTrigger>
+         <!-- Returns the button when the mouse leaves. -->
+         <EventTrigger RoutedEvent="Button.MouseLeave">
+            <EventTrigger.Actions>
+               <BeginStoryboard>
+                  <Storyboard>
+                     <ColorAnimation 
+                  Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                  From="#0471de" To="#0043b0" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                     <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                     From="White" To="#5eacff" Duration="0:0:0.3" AutoReverse="False" RepeatBehavior="1x"/>
+                  </Storyboard>
+               </BeginStoryboard>
+            </EventTrigger.Actions>
+         </EventTrigger>
+      </Style.Triggers>
+   </Style>
+</ResourceDictionary>

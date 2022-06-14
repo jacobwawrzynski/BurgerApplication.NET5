@@ -1,0 +1,144 @@
+﻿<UserControl x:Class="Dashboard.MVVM.View.CartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Dashboard.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="630" d:DesignWidth="960">
+
+   <StackPanel Orientation="Horizontal">
+
+      <!--Summary-->
+      <StackPanel Background="#14151f"
+                     Orientation="Vertical">
+
+         <Border Width="380"
+                     Height="550"
+                     Margin="45"
+                     >
+
+            <Border BorderBrush="Black"
+                    BorderThickness="0,0,0,2"
+                       Height="60"
+                    Width="350"
+                    VerticalAlignment="Top">
+
+               <TextBlock FontFamily="/Fonts/#JosefinSans"
+                       Text="Podsumowanie"
+                       FontWeight="Medium"
+                       Foreground="Black"
+                       FontSize="35"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          Margin="10,10,0,0"
+                       Height="45"
+                       >
+
+               </TextBlock>
+            </Border>
+               
+            
+
+
+            <Border.Background>
+               <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+               <GradientStop Color="#c6f723" Offset="0.0"/>
+               <GradientStop Color="#23f782" Offset="1"/>
+               </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.Clip>
+               <RectangleGeometry RadiusX="20"
+                                       RadiusY="20"
+                                       Rect="0,0,380,550"/>
+            </Border.Clip>
+
+         </Border>
+
+         
+      </StackPanel>
+
+      <StackPanel Background="#14151f"
+                  Orientation="Vertical"
+                  HorizontalAlignment="Right" Width="480">
+
+         <Label Content="KOD RABATOWY"
+                Foreground="Orange"
+                HorizontalAlignment="Center"
+                Margin="0,20,20,0"
+                FontFamily="/Fonts/#JosefinSans"
+                FontSize="20"/>
+         <!--Discount code-->
+         <TextBox Width="400"
+                  Height="60"
+                  Margin="30,10,50,0"
+                  Background="#373a57"
+                  Foreground="Orange"
+                  FontSize="30"
+                  FontFamily="/Fonts/#JosefinSans"
+                  FontWeight="DemiBold"
+                  TextAlignment="Center"
+                  Padding="0,10,0,0"
+                  BorderThickness="0,0,0,1" 
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Center"/>
+
+         <!--Payment method-->
+         <Border Width="400"
+                       Height="350"
+                       Margin="30,40,50,0">
+
+            <Border BorderBrush="White"
+                    BorderThickness="0,0,0,2"
+                       Height="60"
+                    Width="370"
+                    VerticalAlignment="Top">
+
+               <TextBlock FontFamily="/Fonts/#JosefinSans"
+                       Text="Metoda płatności"
+                       FontWeight="Medium"
+                       Foreground="White"
+                       FontSize="35"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"
+                          Margin="10,10,0,0"
+                       Height="45"
+                       >
+
+               </TextBlock>
+            </Border>
+
+            <Border.Background>
+               <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                  <GradientStop Color="#27a1e8" Offset="0.0"/>
+                  <GradientStop Color="#0c44ed" Offset="1"/>
+               </LinearGradientBrush>
+            </Border.Background>
+
+            <Border.Clip>
+               <RectangleGeometry RadiusX="20"
+                                        RadiusY="20"
+                                        Rect="0,0,400,350"/>
+            </Border.Clip>
+
+         </Border>
+         
+         <!--Donload PDF-->
+         <Button x:Name="DownloadInvoicePdfBtn"
+                       VerticalAlignment="Bottom"
+                          HorizontalAlignment="Center"
+                          Margin="0,30,0,0"
+                       Height="60"
+                       Width="250"
+                          Content="FAKTURA PDF"
+                          FontSize="25"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                       Style="{StaticResource ButtonHoverTheme_Blue}"
+                          >
+            
+         </Button>
+      </StackPanel>
+   </StackPanel>
+</UserControl>
