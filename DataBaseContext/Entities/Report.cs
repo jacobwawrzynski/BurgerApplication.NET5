@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomDataToDataBase.Entities
+namespace DataBaseContext.Entities
 {
-    public class Delivery
+    public class Report
     {
         public int Id { get; set; }
         public byte[] File { get; set; }

@@ -1,14 +1,14 @@
 ﻿using Bogus;
 using Bogus.DataSets;
-using RandomDataToDataBase.Entities;
+using DataBaseContext.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using RandomDataToDataBase.Security;
+using DataBaseContext.Security;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomDataToDataBase.random
+namespace DataBaseContext.random
 {
    public static class RandomStaff
    {
@@ -27,7 +27,7 @@ namespace RandomDataToDataBase.random
          staff.Creation_Date = DateTime.Now;
          staff.Deletion_Date = null;
          Entities.Address address = RandomAddress.Generate();
-         if (DataBase.AddAddressToDataBase(address))
+         if (DataBaseQuery.AddAddressToDataBase(address))
          {
             staff.Id_Address = address.Id;
          }
@@ -38,7 +38,7 @@ namespace RandomDataToDataBase.random
          if (staff.Role == "Owner")
          {
             Entities.Restaurant Restaurant = RandomRestaurant.Generate();
-            if (DataBase.AddRestaurantToDataBase(Restaurant))
+            if (DataBaseQuery.AddRestaurantToDataBase(Restaurant))
                staff.Id_Restaurant = Restaurant.Id;
 
             else

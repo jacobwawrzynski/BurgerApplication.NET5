@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomDataToDataBase.Entities
+namespace DataBaseContext.Entities
 {
-    public class Customer
+    public class Restaurant
     {
         public int Id { get; set; }
-        public string Email { get; set; }
-        public string Code { get; set; }
+        public int Id_Address { get; set; }
     }
 }

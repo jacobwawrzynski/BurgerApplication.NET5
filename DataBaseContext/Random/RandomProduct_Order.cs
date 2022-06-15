@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bogus;
-using RandomDataToDataBase.Entities;
+using DataBaseContext.Entities;
 
-namespace RandomDataToDataBase.random
+namespace DataBaseContext.random
 {
     public static class RandomProduct_Order
     {

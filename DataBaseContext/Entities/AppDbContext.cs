@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RandomDataToDataBase.Entities;
+using DataBaseContext.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomDataToDataBase.Entities
+namespace DataBaseContext.Entities
 {
     public class AppDbContext : DbContext
     {

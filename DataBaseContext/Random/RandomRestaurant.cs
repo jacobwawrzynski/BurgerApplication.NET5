@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bogus;
-using RandomDataToDataBase.Entities;
+using DataBaseContext.Entities;
 
-namespace RandomDataToDataBase.random
+namespace DataBaseContext.random
 {
     public static class RandomRestaurant
     {
@@ -15,7 +15,7 @@ namespace RandomDataToDataBase.random
             var faker = new Faker("pl");
             var restaurant = new Entities.Restaurant();
             Address address = RandomAddress.Generate();
-            if (DataBase.AddAddressToDataBase(address))
+            if (DataBaseQuery.AddAddressToDataBase(address))
             {
                 restaurant.Id_Address = address.Id;
             }

@@ -1,12 +1,12 @@
 ﻿using Bogus;
-using RandomDataToDataBase.Entities;
+using DataBaseContext.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomDataToDataBase.random
+namespace DataBaseContext.random
 {
     public static class RandomOrder
     {

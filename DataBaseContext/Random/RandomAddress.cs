@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bogus;
 
-namespace RandomDataToDataBase.random
+namespace DataBaseContext.random
 {
     public static class RandomAddress
     {

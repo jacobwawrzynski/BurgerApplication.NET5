@@ -4,10 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using Microsoft.Data.SqlClient;
-using RandomDataToDataBase.Entities;
-namespace RandomDataToDataBase
+using DataBaseContext.Entities;
+namespace DataBaseContext
 {
-    static class DataBase
+    static class DataBaseQuery
     {
         public static bool AddAddressToDataBase(Address address)
         {

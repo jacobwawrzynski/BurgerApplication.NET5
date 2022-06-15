@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RandomDataToDataBase.Entities
+namespace DataBaseContext.Entities
 {
-    public class Report
+    public class Customer
     {
         public int Id { get; set; }
-        public byte[] File { get; set; }
-        public DateTime Date { get; set; }
+        public string Email { get; set; }
+        public string Code { get; set; }
     }
 }
