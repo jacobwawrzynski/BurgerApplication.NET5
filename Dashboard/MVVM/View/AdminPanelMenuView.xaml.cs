@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DataBaseContext;
+using DataBaseContext.Entities;
 
 
 namespace Dashboard.MVVM.View
@@ -29,13 +29,25 @@ namespace Dashboard.MVVM.View
          InitializeComponent();
       }
 
-      SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb; Initial Catalog=BurgerAppDataBase; Integrated Security=True;");
-      
 
       private void SearchBox_KeyUp(object sender, KeyEventArgs e)
       {
+         using (var db = new AppDbContext())
+         {
+            if (SearchBox.Text != "")
+            {
+               var pr = (from products
+                  in db.Products
+                  where int.Parse(SearchBox.Text) == products.Id
+                  select products).First();
 
-
+               ProductNameField.Text = pr.Name;
+               ProductDescriptionField.Text = pr.Description;
+               ProductPriceField.Text = pr.Price.ToString();
+            }
+            
+         }
+         
 
          //SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb; Initial Catalog=BurgerAppDataBase; Integrated Security=True;");
          //try
