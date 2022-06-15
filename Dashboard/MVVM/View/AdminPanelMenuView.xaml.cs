@@ -29,58 +29,36 @@ namespace Dashboard.MVVM.View
          InitializeComponent();
       }
 
-
+      /// <summary>
+      /// Dynamiczne wyszukiwanie produktów w bazie
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void SearchBox_KeyUp(object sender, KeyEventArgs e)
       {
          using (var db = new AppDbContext())
          {
-            if (SearchBox.Text != "")
+            int value;
+            if (SearchBox.Text != "" && int.TryParse(SearchBox.Text, out value))
             {
-               var pr = (from products
-                  in db.Products
-                  where int.Parse(SearchBox.Text) == products.Id
-                  select products).First();
+               var all = (from i
+                          in db.Products
+                          select i).Count();
 
-               ProductNameField.Text = pr.Name;
-               ProductDescriptionField.Text = pr.Description;
-               ProductPriceField.Text = pr.Price.ToString();
+               if (int.Parse(SearchBox.Text) <= all)
+               {
+                  var pr = (from products
+                  in db.Products
+                            where int.Parse(SearchBox.Text) == products.Id
+                            select products).First();
+
+                  ProductNameField.Text = pr.Name;
+                  ProductDescriptionField.Text = pr.Description;
+                  ProductPriceField.Text = pr.Price.ToString();
+               }
             }
             
          }
-         
-
-         //SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb; Initial Catalog=BurgerAppDataBase; Integrated Security=True;");
-         //try
-         //{
-         //   if (connection.State == ConnectionState.Closed)
-         //      connection.Open();
-
-         //   DataContext dataContext = new DataContext(connection);
-
-         //   string query = "SELECT * FROM Products";
-         //   SqlCommand sqlCommand = new SqlCommand(query, connection);
-         //   DataTable products = new DataTable();
-         //   products.Load(sqlCommand.ExecuteReader());
-
-
-         //   if (SearchBox.Text != "")
-         //   {
-         //      var line = Convert.ToInt32(SearchBox.Text);
-         //      ProductNameField.Text = products.Rows[line]["Name"].ToString();
-         //      ProductPriceField.Text = products.Rows[line]["Price"].ToString();
-         //      ProductDescriptionField.Text = products.Rows[line]["Description"].ToString();
-         //   }
-            
-         //}
-         //catch (Exception ex)
-         //{
-
-         //   MessageBox.Show(ex.Message);
-         //}
-         //finally
-         //{
-         //   connection.Close();
-         //}
         
       }
    }

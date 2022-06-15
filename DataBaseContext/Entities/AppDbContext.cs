@@ -54,7 +54,7 @@ namespace DataBaseContext.Entities
                 e =>
                 {
                     e.Property(f => f.House_Number)
-                    .HasColumnType("varchar(5)");
+                    .HasColumnType("nvarchar(5)");
                 });
                 
         }

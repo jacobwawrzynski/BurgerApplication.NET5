@@ -188,7 +188,7 @@
                        Margin="15,0,0,90"
                        />
 
-               <Image Source="/Images/brgmain.png"
+               <Image Source="Images/brgmain.png"
                       Opacity="1"
                       RenderOptions.BitmapScalingMode="Fant"
                       />

@@ -110,7 +110,7 @@
                        />
 
             <Image Source="/Images/brgmain.png"
-                      Opacity="0.5"
+                      Opacity="1"
                       RenderOptions.BitmapScalingMode="Fant"
                       />
 
