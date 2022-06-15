@@ -10,13 +10,14 @@ namespace DataBaseContext.Entities
 {
     public class AppDbContext : DbContext
     {
-        //string connectionString_ = "Data Source=DESKTOP-FRHKQQK;Initial Catalog=BurgerAppDataBase;Integrated Security=True";
-         string connectionString_ = @"Data Source=(localdb)\MSSqlLocalDb; Initial Catalog=BurgerAppDataBase; Integrated Security=True;";
+        string connectionString_ = "Data Source=DESKTOP-FRHKQQK;Initial Catalog=BurgerAppDataBase;Integrated Security=True";
+         //string connectionString_ = @"Data Source=(localdb)\MSSqlLocalDb; Initial Catalog=BurgerAppDataBase; Integrated Security=True;";
 
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Allergen> Allergens { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Delivery> Delivery { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Discount_Code> Discount_Codes { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Product> Products { get; set; }

@@ -112,6 +112,23 @@ namespace DataBaseContext
             }
             return true;
         }
+        public static bool AddInvoiceToDataBase(Invoice invoice)
+        {
+            try
+            {
+                using (var db = new AppDbContext())
+                {
+                    db.Invoices.Add(invoice);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            return true;
+        }
         public static bool AddDiscountCodeToDataBase(Discount_Code discount_Code)
         {
             try
@@ -213,6 +230,34 @@ namespace DataBaseContext
                 return false;
             }
             return true;
+        }
+        public static List<Product> DownloadProductsFromOrder(Order order)
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from p in db.Products
+                        join po in db.Products_Orders on p.Id equals po.Id_Product
+                        where po.Id_Order == order.Id
+                        select p).ToList();
+            }
+
+        }
+        public static List<Invoice> DownloadInvoice()
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from i in db.Invoices
+                        select i).ToList();
+            }
+        }
+        public static Invoice DownloadInvoiceAt(int index)
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from i in db.Invoices
+                        where i.Id == index
+                        select i).LastOrDefault();
+            }
         }
     }
 }
