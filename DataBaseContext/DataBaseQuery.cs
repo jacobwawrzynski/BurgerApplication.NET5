@@ -45,20 +45,17 @@ namespace DataBaseContext
         }
         public static bool AddStaffToDataBase(Staff staff)
         {
-            try
-            {
-                using (var db = new AppDbContext())
-                {
-                    db.Staff.Add(staff);
-                    db.SaveChanges();
-                }
-            }
-            catch (Exception)
-            {
+            
+               using (var db = new AppDbContext())
+               {
+                  db.Staff.Add(staff);
+                  db.SaveChanges();
+               }
 
-                return false;
-            }
-            return true;
+
+
+
+         return true;
         }
         public static bool AddAllergenToDataBase(Allergen allergen)
         {

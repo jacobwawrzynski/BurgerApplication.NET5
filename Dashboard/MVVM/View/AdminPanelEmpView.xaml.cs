@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataBaseContext.random;
 
 namespace Dashboard.MVVM.View
 {
@@ -86,18 +87,6 @@ namespace Dashboard.MVVM.View
          {
             Staff employee = new Staff();
             Address address = new Address();
-            Restaurant restaurant = new Restaurant();
-
-            employee.Login = LoginField.Text;
-            employee.Password = PasswordField.Text;
-            employee.Name = ForenameField.Text;
-            employee.Last_Name = LastNameField.Text;
-            employee.Pesel = PeselField.Text;
-            employee.Role = RoleField.Text;
-            employee.Id_Address = int.Parse(AddressField.Text);
-            employee.Id_Restaurant = restaurant.Id_Address;
-            DataBaseQuery.AddRestaurantToDataBase(restaurant);
-            DataBaseQuery.AddStaffToDataBase(employee);
 
             address.City = CityField.Text;
             address.Zip_Code = ZipCodeField.Text;
@@ -105,6 +94,28 @@ namespace Dashboard.MVVM.View
             address.House_Number = HouseNumberField.Text;
             address.Apartment_Number = FlatNumberField.Text;
             DataBaseQuery.AddAddressToDataBase(address);
+
+
+            employee.Login = LoginField.Text;
+            employee.Password = PasswordField.Text;
+            employee.Name = ForenameField.Text;
+            employee.Last_Name = LastNameField.Text;
+            employee.Pesel = PeselField.Text;
+            employee.Role = RoleField.Text;
+            employee.Email = EmailField.Text;
+            if (AddressField.Text == null || AddressField.Text == "")
+            {
+               employee.Id_Address = (from a in db.Addresses orderby a.Id select a).Last().Id;
+            }
+            else
+            {
+               employee.Id_Address = int.Parse(AddressField.Text);
+            }
+            
+            employee.Id_Restaurant = int.Parse(RestaurantField.Text);
+            DataBaseQuery.AddStaffToDataBase(employee);
+
+            
 
 
             

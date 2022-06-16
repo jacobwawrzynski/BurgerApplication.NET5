@@ -12,7 +12,8 @@
 
       <!--List with products-->
       <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                    VerticalScrollBarVisibility="Hidden">
+                    VerticalScrollBarVisibility="Hidden"
+                    >
          <StackPanel Background="#14151f"
                      Orientation="Vertical">
             <StackPanel Orientation="Vertical"
@@ -24,7 +25,7 @@
                        Opacity="0.6"
                        Style="{StaticResource BorderAnimation}">
 
-
+                 
 
                   <Border.Background>
                      <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
@@ -119,6 +120,7 @@
                        Height="65"
                     VerticalAlignment="Top" Margin="15,-15,10,0">
 
+               
                <TextBlock FontFamily="/Fonts/#JosefinSans"
                        Text="Zamówienie"
                        FontWeight="Medium"
@@ -131,6 +133,8 @@
                        >
 
                </TextBlock>
+
+               
             </Border>
 
 
