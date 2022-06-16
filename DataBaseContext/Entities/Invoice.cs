@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.Entities
 {
-    public class Delivery
+    public class Invoice
     {
         public int Id { get; set; }
         public byte[] File { get; set; }

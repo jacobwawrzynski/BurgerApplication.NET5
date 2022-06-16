@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.Entities
 {
-    public class Delivery
+    public class Image
     {
         public int Id { get; set; }
-        public byte[] File { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        public DateTime Date { get; set; }
-        public int Id_Restaurant { get; set; }
+        [Column(TypeName = "image")]
+        public byte[] ImageData { get; set; }
+        public string Alt_Text { get; set; }
     }
 }

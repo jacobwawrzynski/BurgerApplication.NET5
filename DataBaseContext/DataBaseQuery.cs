@@ -112,6 +112,23 @@ namespace DataBaseContext
             }
             return true;
         }
+        public static bool AddInvoiceToDataBase(Invoice invoice)
+        {
+            try
+            {
+                using (var db = new AppDbContext())
+                {
+                    db.Invoices.Add(invoice);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            return true;
+        }
         public static bool AddDiscountCodeToDataBase(Discount_Code discount_Code)
         {
             try
@@ -215,6 +232,98 @@ namespace DataBaseContext
                 return false;
             }
             return true;
+        }
+        public static List<Product> DownloadProductsFromOrder(Order order)
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from p in db.Products
+                        join po in db.Products_Orders on p.Id equals po.Id_Product
+                        where po.Id_Order == order.Id
+                        select p).ToList();
+            }
+
+        }
+        public static List<Invoice> DownloadInvoices()
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from i in db.Invoices
+                        select i).ToList();
+            }
+        }
+        public static Invoice DownloadInvoiceAt(int index)
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from i in db.Invoices
+                        where i.Id == index
+                        orderby i.Id
+                        select i).FirstOrDefault();
+            }
+        }
+        public static List<Report> DownloadReports()
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from r in db.Reports
+                        select r).ToList();
+            }
+        }
+        public static Report DownloadReportsAt(int index)
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from r in db.Reports
+                        where r.Id == index
+                        orderby r.Id
+                        select r).FirstOrDefault();
+            }
+        }
+        public static List<Delivery> DownloadDelivery()
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from d in db.Delivery
+                        select d).ToList();
+            }
+        }
+        public static Delivery DownloadDeliveryAt(int index)
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from d in db.Delivery
+                        where d.Id == index
+                        orderby d.Id
+                        select d).FirstOrDefault();
+            }
+        }
+        public static bool AddImageToDataBase(Image image)
+        {
+            try
+            {
+                using (var db = new AppDbContext())
+                {
+                    db.Images.Add(image);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            return true;
+        }
+        public static Image DownladImage(string name)
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from i in db.Images
+                        where i.Alt_Text == name
+                        orderby i.Id
+                        select i).FirstOrDefault();
+            }
         }
     }
 }
