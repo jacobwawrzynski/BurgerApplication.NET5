@@ -10,7 +10,7 @@
 
    <StackPanel Orientation="Vertical">
 
-      
+
       <StackPanel Background="#14151f"
                   Orientation="Horizontal"
                   Height="150">
@@ -36,25 +36,33 @@
                   BorderThickness="0,0,0,1" 
                   HorizontalAlignment="Center"/>
          </StackPanel>
-        
 
-         
-         
+
+
+
          <!--Donload PDF-->
          <Button x:Name="DownloadInvoicePdfBtn"
                        VerticalAlignment="Center"
-                          HorizontalAlignment="Center"
                           Margin="40,0,0,0"
                        Height="60"
-                       Width="250"
+                       Width="190"
                           Content="FAKTURA PDF"
                           FontSize="25"
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"
                        Style="{StaticResource ButtonHoverTheme_Blue}"
-                          >
-            
-         </Button>
+                          />
+         <Button x:Name="MakeOrgerBtn"
+                       Height="60"
+                       Width="190"
+                 Margin="20,0,0,0"
+                          Content="ZREALIZUJ"
+                          FontSize="25"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                       Style="{StaticResource ButtonHoverTheme_Blue}"
+                 Click="MakeOrgerBtn_Click"
+                          />
       </StackPanel>
 
       <!--Summary-->

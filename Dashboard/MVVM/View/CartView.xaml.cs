@@ -30,5 +30,53 @@ namespace Dashboard.MVVM.View
       {
          SummaryDG.ItemsSource = SalesView.pr;
       }
+
+      private void MakeOrgerBtn_Click(object sender, RoutedEventArgs e)
+      {
+
+      }
+
+      //      SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb; Initial Catalog=BurgerAppDataBase; Integrated Security=True;");
+
+      //         try
+      //         {
+      //            if (connection.State == ConnectionState.Closed)
+      //               connection.Open();
+
+      //            string query = "SELECT * FROM Staff WHERE Login=@Login AND Password=@Password";
+      //      SqlCommand sqlCommand = new SqlCommand(query, connection);
+      //      sqlCommand.Parameters.AddWithValue("@Login", txtLogin.Text);
+      //            sqlCommand.Parameters.AddWithValue("@Password", txtPassword.Password);
+
+      //            //int count = Convert.ToInt32(sqlCommand.ExecuteScalar());
+      //            DataTable dataTable = new DataTable();
+      //      dataTable.Load(sqlCommand.ExecuteReader());
+
+      //            // EDIT FOR PROPER LOGGING
+      //            if (dataTable.Rows.Count == 1)
+      //            {
+      //               MainWindow mainWindow = new MainWindow();
+      //      mainWindow.Show();
+      //               string role = dataTable.Rows[0]["Role"].ToString();
+      //               if (role == "Manager")
+      //               {
+      //                  mainWindow.AdminPanelBtn.Visibility = Visibility.Visible;
+      //               }
+      //               this.Close();
+
+      //            }
+      //            else
+      //            {
+      //               MessageBox.Show("Username or Password is incorrect");
+      //            }
+      //         }
+      //         catch (Exception ex)
+      //{
+      //   MessageBox.Show(ex.Message);
+      //}
+      //finally
+      //{
+      //   connection.Close();
+      //}
    }
 }
