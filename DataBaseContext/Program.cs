@@ -28,66 +28,73 @@ namespace DataBaseContext
             //    DataBaseQuery.AddProduct_OrderToDataBase(random.RandomProduct_Order.Generate());
             //}
 
+            Staff staff = random.RandomStaff.Generate();
+            staff.Login = "Admin";
+            staff.Password = Security.Encryption.ComputeHash("Admin", "SHA512", null);
+            staff.Role = "Manager";
+
+            DataBaseQuery.AddStaffToDataBase(staff);
+
             #region invoice
-            Order order;
-            using (var db = new AppDbContext())
-            {
-                order = (from o in db.Orders
-                         where o.Id == 69
-                         select o).FirstOrDefault();
-            }
+            //Order order;
+            //using (var db = new AppDbContext())
+            //{
+            //    order = (from o in db.Orders
+            //             where o.Id == 69
+            //             select o).FirstOrDefault();
+            //}
 
-            InvoiceMenager invoiceMenager = new InvoiceMenager(order);
+            //InvoiceMenager invoiceMenager = new InvoiceMenager(order);
 
-            Invoice invoice = new Invoice() { File = PdfMenager.PdfToByteArray(invoiceMenager.GeneratePdf()), Id_Restaurant = invoiceMenager.restaurant.Id };
+            //Invoice invoice = new Invoice() { File = PdfMenager.PdfToByteArray(invoiceMenager.GeneratePdf()), Id_Restaurant = invoiceMenager.restaurant.Id };
 
-            DataBaseQuery.AddInvoiceToDataBase(invoice);
+            //DataBaseQuery.AddInvoiceToDataBase(invoice);
 
-            var iv = DataBaseQuery.DownloadInvoices().Last();
+            //var iv = DataBaseQuery.DownloadInvoices().Last();
 
-            PdfMenager.SavePdf(iv.File, @$"C:\Users\jasie\Desktop\testplz\{iv.Id}-{iv.Date.Day}-{iv.Date.Month}-{iv.Date.Year}.pdf");
+            //PdfMenager.SavePdf(iv.File, @$"C:\Users\jasie\Desktop\testplz\{iv.Id}-{iv.Date.Day}-{iv.Date.Month}-{iv.Date.Year}.pdf");
             #endregion
 
             #region report
-            Restaurant restaurant;
-            using (var db = new AppDbContext())
-            {
-                restaurant = (from r in db.Restaurants
-                              where r.Id == 1
-                              select r).FirstOrDefault();
-            }
-            ReportMenager reportMenager = new ReportMenager(new DateTime(2022, 03, 14), restaurant);
-            var rap = reportMenager.GeneratePdf();
-            Report report = new Report() { File = PdfMenager.PdfToByteArray(rap), Id_Restaurant = reportMenager.restaurant.Id };
-            DataBaseQuery.AddReportsToDataBase(report);
+            //Restaurant restaurant;
+            //using (var db = new AppDbContext())
+            //{
+            //    restaurant = (from r in db.Restaurants
+            //                  where r.Id == 1
+            //                  select r).FirstOrDefault();
+            //}
+            //ReportMenager reportMenager = new ReportMenager(new DateTime(2022, 03, 14), restaurant);
+            //var rap = reportMenager.GeneratePdf();
+            //Report report = new Report() { File = PdfMenager.PdfToByteArray(rap), Id_Restaurant = reportMenager.restaurant.Id };
+            //DataBaseQuery.AddReportsToDataBase(report);
 
-            var repfromdb = PdfMenager.ByteArrayToPdf(DataBaseQuery.DownloadReports().Last().File);
+            //var repfromdb = PdfMenager.ByteArrayToPdf(DataBaseQuery.DownloadReports().Last().File);
 
-            PdfMenager.SavePdf(repfromdb, @$"C:\Users\jasie\Desktop\testplz", "raporcikzbazy");
-            //PdfMenager.SavePdf(rap, @$"C:\Users\jasie\Desktop\testplz", "raporcik");
+            //PdfMenager.SavePdf(repfromdb, @$"C:\Users\jasie\Desktop\testplz", "raporcikzbazy");
+            ////PdfMenager.SavePdf(rap, @$"C:\Users\jasie\Desktop\testplz", "raporcik");
             #endregion
 
             #region Delivery
-            Restaurant restaurant2;
-            using (var db = new AppDbContext())
-            {
-                restaurant2 = (from r in db.Restaurants
-                              where r.Id == 2
-                              select r).FirstOrDefault();
-            }
-            DeliveryMenager delivaryMenager = new DeliveryMenager(restaurant2);
-            delivaryMenager.dodaj("bułki", 100);
-            delivaryMenager.dodaj("Ser", 1);
-            delivaryMenager.dodaj("Nachosy", 2);
-            delivaryMenager.dodaj("Warzywa", 3);
+            //Restaurant restaurant2;
+            //using (var db = new AppDbContext())
+            //{
+            //    restaurant2 = (from r in db.Restaurants
+            //                  where r.Id == 2
+            //                  select r).FirstOrDefault();
+            //}
+            //DeliveryMenager delivaryMenager = new DeliveryMenager(restaurant2);
+            //delivaryMenager.Add("bułki", 100);
+            //delivaryMenager.Add("Ser", 1);
+            //delivaryMenager.Add("Nachosy", 2);
+            //delivaryMenager.Add("Warzywa", 3);
 
-            var pdf = delivaryMenager.GeneratePdf();
+            //var pdf = delivaryMenager.GeneratePdf();
 
-            Delivery delivery = new Delivery() { File = PdfMenager.PdfToByteArray(pdf), Id_Restaurant = delivaryMenager.restaurant.Id };
-            DataBaseQuery.AddDeliveryToDataBase(delivery);
+            //Delivery delivery = new Delivery() { File = PdfMenager.PdfToByteArray(pdf), Id_Restaurant = delivaryMenager.restaurant.Id };
+            //DataBaseQuery.AddDeliveryToDataBase(delivery);
 
-            var pdfzbazy = DataBaseQuery.DownloadDelivery().Last().File;
-            PdfMenager.SavePdf(pdfzbazy, @$"C:\Users\jasie\Desktop\testplz", "dostawa");
+            //var pdfzbazy = DataBaseQuery.DownloadDelivery().Last().File;
+            //PdfMenager.SavePdf(pdfzbazy, @$"C:\Users\jasie\Desktop\testplz", "dostawa");
             #endregion
 
             #region image

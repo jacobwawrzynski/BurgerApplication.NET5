@@ -27,9 +27,17 @@ namespace DataBaseContext.MyPdf
             this.restaurant = restaurant;
         }
 
-        public void dodaj(string name, int value)
+        public void Add(string name, int value)
         {
             dostawa.Add((name, value));
+        }
+        public void Clear()
+        {
+            dostawa.Clear();
+        }
+        public bool IsEmpty()
+        {
+            return dostawa.Count == 0;
         }
         public PdfDocument GeneratePdf()
         {

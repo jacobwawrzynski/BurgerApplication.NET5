@@ -1,4 +1,6 @@
-﻿using DataBaseContext.Entities;
+﻿using DataBaseContext;
+using DataBaseContext.Entities;
+using DataBaseContext.MyPdf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +34,7 @@ namespace Dashboard.MVVM.View
          {
             var q = from deliveries
                     in db.Delivery
-                    select new {deliveries.Id, deliveries.File, deliveries.Date};
+                    select deliveries;
 
             DeliveriesDG.ItemsSource = q.ToList();
          }
@@ -46,5 +48,14 @@ namespace Dashboard.MVVM.View
 
 
       }
-   }
+
+        private void DownloadDeliveryPdfBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (GenerateDeliveryWindow.DeliveryMenager.IsEmpty()) return;
+            var pdf = GenerateDeliveryWindow.DeliveryMenager.GeneratePdf();
+            Delivery delivery = new Delivery() { File = PdfMenager.PdfToByteArray(pdf),Id_Restaurant = session.restaurant.Id };
+            DataBaseQuery.AddDeliveryToDataBase(delivery);
+            GenerateDeliveryWindow.DeliveryMenager.Clear();
+        }
+    }
 }

@@ -8,7 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace DataBaseContext.Security
 {
-   internal class Encryption
+   public class Encryption
    {
       public static string ComputeHash(string plainText, string hashAlgorithm, byte[] saltBytes)
       {

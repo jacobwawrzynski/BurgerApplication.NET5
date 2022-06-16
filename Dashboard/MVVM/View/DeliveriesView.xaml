@@ -65,7 +65,7 @@
          </Border>
 
          <!--Generate PDF-->
-         <Button x:Name="DownloadDeliveryPdfBtn"
+         <Button x:Name="AddDeliveryToDataBaseBtn_Click"
                  Grid.Column="1"
                        VerticalAlignment="Center"
                           HorizontalAlignment="Center"
@@ -75,7 +75,7 @@
                           FontSize="25"
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"
-                       Style="{StaticResource ButtonHoverTheme_Blue}"
+                       Style="{StaticResource ButtonHoverTheme_Blue}" Click="DownloadDeliveryPdfBtn_Click"
                           >
 
          </Button>
