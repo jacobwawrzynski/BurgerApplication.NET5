@@ -25,7 +25,7 @@
                 FontSize="20"
              VerticalAlignment="Top"
              Height="40"/>
-      <TextBox x:Name="SearchBox"
+      <TextBox x:Name="SearchBoxRegCus"
          Width="100"
                   Height="40"
                   Margin="0,20,0,0"
@@ -39,6 +39,7 @@
                   BorderThickness="2,2,2,2"
                BorderBrush="#0043b0"
                VerticalAlignment="Top"
+               KeyUp="RegCusSearchBox_KeyUp"
                >
       </TextBox>
 
@@ -69,7 +70,8 @@
                BorderThickness="0,0,0,1" 
                VerticalAlignment="Center"
                HorizontalAlignment="Center"
-               Grid.Row="1"/>
+               Grid.Row="1"
+                  />
 
 
 
@@ -119,7 +121,8 @@
                           FontSize="25"
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"
-                    Margin="0,0,50,0">
+                    Margin="0,0,50,0"
+                 Click="Add_RegCus_Btn_Click">
 
          </Button>
 
@@ -133,7 +136,8 @@
                           FontSize="25"
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"
-                    Margin="0,0,50,0">
+                    Margin="0,0,50,0"
+                 Click="Remove_RegCus_Btn_Click">
 
          </Button>
 
@@ -146,7 +150,8 @@
                         Content="✔ ZAPISZ"
                           FontSize="25"
                          FontFamily="/Fonts/#JosefinSans"
-                        FontWeight="Heavy">
+                        FontWeight="Heavy"
+                 Click="Save_RegCus_Btn_Click">
 
          </Button>
       </StackPanel>

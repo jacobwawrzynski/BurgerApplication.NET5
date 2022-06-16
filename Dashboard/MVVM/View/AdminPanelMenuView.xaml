@@ -27,7 +27,7 @@
                 FontSize="20"
              VerticalAlignment="Top"
              Height="40"/>
-      <TextBox x:Name="SearchBox"
+      <TextBox x:Name="SearchBoxProduct"
          Width="100"
                   Height="40"
                   Margin="0,20,0,0"
@@ -42,7 +42,7 @@
                BorderBrush="#0043b0"
                VerticalAlignment="Top"
                Grid.ColumnSpan="2"
-               KeyUp="SearchBox_KeyUp"
+               KeyUp="SearchBoxProduct_KeyUp"
                >
       </TextBox>
 
@@ -154,7 +154,8 @@
                           FontSize="25"
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"
-                    Margin="0,0,50,0">
+                    Margin="0,0,50,0"
+                 Click="Add_Product_Btn_Click">
 
          </Button>
 
@@ -168,7 +169,8 @@
                           FontSize="25"
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"
-                    Margin="0,0,50,0">
+                    Margin="0,0,50,0"
+                 Click="Remove_Product_Btn_Click">
 
          </Button>
 
@@ -181,7 +183,8 @@
                         Content="✔ ZAPISZ"
                           FontSize="25"
                          FontFamily="/Fonts/#JosefinSans"
-                        FontWeight="Heavy">
+                        FontWeight="Heavy"
+                 Click="Save_Product_Btn_Click">
 
          </Button>
       </StackPanel>

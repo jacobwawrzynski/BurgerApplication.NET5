@@ -7,7 +7,7 @@ using Microsoft.Data.SqlClient;
 using DataBaseContext.Entities;
 namespace DataBaseContext
 {
-    static class DataBaseQuery
+    public static class DataBaseQuery
     {
         public static bool AddAddressToDataBase(Address address)
         {
@@ -158,7 +158,6 @@ namespace DataBaseContext
             }
             catch (Exception)
             {
-
                 return false;
             }
             return true;
