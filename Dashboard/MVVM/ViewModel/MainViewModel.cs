@@ -15,6 +15,7 @@ namespace Dashboard.MVVM.ViewModel
       public RelayCommand SalesCommand { get; set; }
       public RelayCommand RaportCommand { get; set; }
       public RelayCommand MainCommand { get; set; }
+      public RelayCommand InvoiceCommand { get; set; }
 
 
       public DeliveryViewModel DeliveryVM { get; set; }
@@ -22,6 +23,7 @@ namespace Dashboard.MVVM.ViewModel
       public RaportViewModel RaportVM { get; set; }
       public SalesViewModel SalesVM { get; set; }
       public MainViewModel MainVM { get; set; }
+      public InvoiceViewModel InvoiceVM { get; set; }
 
       
       private object _currentView;
@@ -42,12 +44,13 @@ namespace Dashboard.MVVM.ViewModel
          CartVM = new CartViewModel();
          RaportVM = new RaportViewModel();
          DeliveryVM = new DeliveryViewModel();
-
+         InvoiceVM = new InvoiceViewModel();
 
          SalesCommand = new RelayCommand(command => { CurrentView = SalesVM; });
          CartCommand = new RelayCommand(command => { CurrentView = CartVM; });
          RaportCommand = new RelayCommand(command => { CurrentView = RaportVM; });
          DeliveryCommand = new RelayCommand(command => { CurrentView = DeliveryVM; });
+         InvoiceCommand = new RelayCommand(command => { CurrentView = InvoiceVM; });
       }
    }
 }

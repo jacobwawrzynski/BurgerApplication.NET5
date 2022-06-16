@@ -11,24 +11,25 @@ namespace DataBaseContext
     {
         static void Main(string[] args)
         {
-            //for (int i = 0; i < 20; i++)
-            //{
-            //    DataBaseQuery.AddStaffToDataBase(random.RandomStaff.Generate());
-            //}
-            //for (int i = 0; i < 50; i++)
-            //{
-            //    DataBaseQuery.AddCustomerToDataBase(random.RandomCustomer.Generate());
-            //}
-            //for (int i = 0; i < 8000; i++)
-            //{
-            //    DataBaseQuery.AddOrderToDataBase(random.RandomOrder.Generate());
-            //}
-            //for (int i = 0; i < 20000; i++)
-            //{
-            //    DataBaseQuery.AddProduct_OrderToDataBase(random.RandomProduct_Order.Generate());
-            //}
+         //for (int i = 0; i < 20; i++)
+         //{
+         //    DataBaseQuery.AddStaffToDataBase(random.RandomStaff.Generate());
+         //}
+         //for (int i = 0; i < 50; i++)
+         //{
+         //    DataBaseQuery.AddCustomerToDataBase(random.RandomCustomer.Generate());
+         //}
+         //for (int i = 0; i < 8000; i++)
+         //{
+         //    DataBaseQuery.AddOrderToDataBase(random.RandomOrder.Generate());
+         //}
+         //for (int i = 0; i < 20000; i++)
+         //{
+         //    DataBaseQuery.AddProduct_OrderToDataBase(random.RandomProduct_Order.Generate());
+         //}
 
-            Staff staff = random.RandomStaff.Generate();
+
+         Staff staff = random.RandomStaff.Generate();
             staff.Login = "Admin";
             staff.Password = Security.Encryption.ComputeHash("Admin", "SHA512", null);
             staff.Role = "Manager";

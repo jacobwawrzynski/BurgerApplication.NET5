@@ -148,19 +148,22 @@ namespace DataBaseContext
         }
         public static bool AddOrderToDataBase(Order order)
         {
-            try
+         try
+         {
+            using (var db = new AppDbContext())
             {
-                using (var db = new AppDbContext())
-                {
-                    db.Orders.Add(order);
-                    db.SaveChanges();
-                }
+               db.Orders.Add(order);
+               db.SaveChanges();
             }
-            catch (Exception)
-            {
+         }
+         catch (Exception)
+         {
 
-                return false;
-            }
+            return false;
+         }
+               
+            
+
             return true;
         }
         public static bool AddProductToDataBase(Product product)

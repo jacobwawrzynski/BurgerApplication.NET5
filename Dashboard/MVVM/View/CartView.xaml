@@ -23,8 +23,9 @@
                 FontFamily="/Fonts/#JosefinSans"
                 FontSize="20"/>
             <!--Discount code-->
-            <TextBox Width="400"
-                  Height="60"
+            <TextBox x:Name="DiscountCodeTB" 
+                  Width="250"
+                  Height="50"
                   Margin="30,10,50,0"
                   Background="#373a57"
                   Foreground="Orange"
@@ -37,13 +38,34 @@
                   HorizontalAlignment="Center"/>
          </StackPanel>
 
+         <StackPanel Orientation="Vertical">
+            <Label Content="KOD KLIENTA"
+                Foreground="Orange"
+                HorizontalAlignment="Center"
+                Margin="0,20,20,0"
+                FontFamily="/Fonts/#JosefinSans"
+                FontSize="20"/>
+            <!--Client code-->
+            <TextBox x:Name="ClientCodeTB" 
+                  Width="250"
+                  Height="50"
+                  Margin="30,10,50,0"
+                  Background="#373a57"
+                  Foreground="Orange"
+                  FontSize="30"
+                  FontFamily="/Fonts/#JosefinSans"
+                  FontWeight="DemiBold"
+                  TextAlignment="Center"
+                  Padding="0,10,0,0"
+                  BorderThickness="0,0,0,1" 
+                  HorizontalAlignment="Center"/>
+         </StackPanel>
 
-
-
-         <!--Donload PDF-->
-         <Button x:Name="DownloadInvoicePdfBtn"
+         <StackPanel Width="280">
+            <!--Donload PDF-->
+            <Button x:Name="DownloadInvoicePdfBtn"
                        VerticalAlignment="Center"
-                          Margin="40,0,0,0"
+                          Margin="20,5,0,0"
                        Height="60"
                        Width="190"
                           Content="FAKTURA PDF"
@@ -52,17 +74,20 @@
                                FontWeight="Heavy"
                        Style="{StaticResource ButtonHoverTheme_Blue}"
                           />
-         <Button x:Name="MakeOrgerBtn"
+            <Button x:Name="MakeOrderBtn"
                        Height="60"
                        Width="190"
-                 Margin="20,0,0,0"
+                 Margin="20,20,0,0"
                           Content="ZREALIZUJ"
                           FontSize="25"
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"
                        Style="{StaticResource ButtonHoverTheme_Blue}"
-                 Click="MakeOrgerBtn_Click"
+                 Click="MakeOrderBtn_Click"
                           />
+         </StackPanel>
+
+         
       </StackPanel>
 
       <!--Summary-->
@@ -113,10 +138,6 @@
                       RowBackground="Transparent"
                       Height="350"
                       >
-               <!--<DataGrid.Columns>
-                  <DataGridTextColumn Header="Name"/>
-                  <DataGridTextColumn Header="Price"/>
-               </DataGrid.Columns>-->
 
             </DataGrid>
 

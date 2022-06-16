@@ -82,6 +82,7 @@
                     FontSize="35"
                     FontFamily="Fonts/#JosefinSans"
                     FontWeight="Black"
+                          Margin="0,0,0,0"
                           >
 
                   <TextBlock.Effect>
@@ -94,12 +95,11 @@
 
 
                <!-- Navigation menu -->
-               <Grid Grid.Column="1" Grid.Row="1">
+               <Grid Grid.Row="1" Margin="0,0,0,215" Grid.RowSpan="2">
 
-                  <StackPanel Width="250"
+                  <StackPanel Width="260"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Center" 
-                           Margin="0,25,0,35">
+                           HorizontalAlignment="Center" Height="320">
 
                      <RadioButton Content="  💲      |   SPRZEDAŻ"
                          Height="50"
@@ -133,21 +133,28 @@
                          Style="{StaticResource MenuButtonTheme}"
                                   Command="{Binding DeliveryCommand}"/>
 
-
+                     <RadioButton Content=" 📜    |    FAKTURY"
+                         Height="50"
+                         FontSize="17"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                         Style="{StaticResource MenuButtonTheme}"
+                                  Command="{Binding InvoiceCommand}"/>
                   </StackPanel>
                </Grid>
 
 
                <!-- Log out button -->
                <Grid Grid.Row="2"
-                     Height="200"
+                     Height="190"
+                     Margin="0,20,0,0"
                      VerticalAlignment="Top">
 
 
                   <Button x:Name="LogOutBtn"
                        VerticalAlignment="Center"
                           HorizontalAlignment="Center"
-                          Margin="0,-120,0,0"
+                          Margin="0,-100,0,0"
                        Height="40"
                        Width="170"
                           Content="WYLOGUJ"

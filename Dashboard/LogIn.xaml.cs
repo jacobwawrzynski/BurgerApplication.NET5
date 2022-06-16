@@ -52,7 +52,9 @@ namespace Dashboard
         {
             using (var db = new AppDbContext())
             {
-                var user = (from s in db.Staff
+            
+
+            var user = (from s in db.Staff
                            where s.Login == txtLogin.Text.ToString()
                            select s).FirstOrDefault();
 

@@ -88,7 +88,6 @@ namespace Dashboard.MVVM.View
       {
          Product product = ProductsDG.SelectedItem as Product;
          pr.Add(product);
-
       }
    }
 }

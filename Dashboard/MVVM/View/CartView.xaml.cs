@@ -1,4 +1,5 @@
-﻿using DataBaseContext.Entities;
+﻿using DataBaseContext;
+using DataBaseContext.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,52 +32,34 @@ namespace Dashboard.MVVM.View
          SummaryDG.ItemsSource = SalesView.pr;
       }
 
-      private void MakeOrgerBtn_Click(object sender, RoutedEventArgs e)
+      private void MakeOrderBtn_Click(object sender, RoutedEventArgs e)
       {
+         List<Product> productsInCart = SalesView.pr;
+         Order order = new Order();
+         Product_Order product_Order = new Product_Order();
+         using (var db = new AppDbContext())
+         {
+            if (int.TryParse(ClientCodeTB.Text, out int result))
+            {
+               result = int.Parse(ClientCodeTB.Text);
+               order.Id_Customer = result;
+            }
+            if (int.TryParse(DiscountCodeTB.Text, out int result2))
+            {
+               result2 = int.Parse(DiscountCodeTB.Text);
+               order.Id_Discount_Code = result2;
+            }
+            order.Id_Staff = session.staff.Id;
+            
+            DataBaseQuery.AddOrderToDataBase(order);
 
+            foreach (var item in productsInCart)
+            {
+               product_Order.Id_Order = order.Id;
+               product_Order.Id_Product = item.Id;
+               DataBaseQuery.AddProduct_OrderToDataBase(product_Order);
+            }
+         }
       }
-
-      //      SqlConnection connection = new SqlConnection(@"Data Source=(localdb)\MSSqlLocalDb; Initial Catalog=BurgerAppDataBase; Integrated Security=True;");
-
-      //         try
-      //         {
-      //            if (connection.State == ConnectionState.Closed)
-      //               connection.Open();
-
-      //            string query = "SELECT * FROM Staff WHERE Login=@Login AND Password=@Password";
-      //      SqlCommand sqlCommand = new SqlCommand(query, connection);
-      //      sqlCommand.Parameters.AddWithValue("@Login", txtLogin.Text);
-      //            sqlCommand.Parameters.AddWithValue("@Password", txtPassword.Password);
-
-      //            //int count = Convert.ToInt32(sqlCommand.ExecuteScalar());
-      //            DataTable dataTable = new DataTable();
-      //      dataTable.Load(sqlCommand.ExecuteReader());
-
-      //            // EDIT FOR PROPER LOGGING
-      //            if (dataTable.Rows.Count == 1)
-      //            {
-      //               MainWindow mainWindow = new MainWindow();
-      //      mainWindow.Show();
-      //               string role = dataTable.Rows[0]["Role"].ToString();
-      //               if (role == "Manager")
-      //               {
-      //                  mainWindow.AdminPanelBtn.Visibility = Visibility.Visible;
-      //               }
-      //               this.Close();
-
-      //            }
-      //            else
-      //            {
-      //               MessageBox.Show("Username or Password is incorrect");
-      //            }
-      //         }
-      //         catch (Exception ex)
-      //{
-      //   MessageBox.Show(ex.Message);
-      //}
-      //finally
-      //{
-      //   connection.Close();
-      //}
    }
 }

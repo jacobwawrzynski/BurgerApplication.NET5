@@ -48,6 +48,10 @@
          <DataTemplate DataType="{x:Type view:GenerateDeliveryWindow}">
             <view:GenerateDeliveryWindow/>
          </DataTemplate>
+
+         <DataTemplate DataType="{x:Type viewModel:InvoiceViewModel}">
+            <view:InvoiceView/>
+         </DataTemplate>
       </ResourceDictionary>
    </Application.Resources>
 </Application>
