@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Dashboard.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="630" d:DesignWidth="960">
-    <Grid>
+             d:DesignHeight="630" d:DesignWidth="960"
+             Loaded="Deliveries_Loaded">
+   <Grid>
       <Grid Background="#14151f">
          <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -31,35 +32,22 @@
                                FontWeight="Heavy"
                        Style="{StaticResource ButtonHoverTheme_Blue}"
                           >
-            
+
          </Button>
-
-         <DatePicker HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
-                  Grid.Column="2"
-                  Grid.Row="0"
-                     Margin="150,0,0,0"
-                     CalendarStyle="{StaticResource DatePickerCalendarStyle}"/>
-
-         <DatePicker HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
-                  Grid.Column="2"
-                  Grid.Row="0"
-                     Margin="-150,0,0,0"
-                     CalendarStyle="{StaticResource DatePickerCalendarStyle}"
-                     >
-         </DatePicker>
 
          <!--Deliveries-->
          <Border Width="850"
-              Grid.Row="2"
+              Grid.Row="1"
               Grid.ColumnSpan="3"
               VerticalAlignment="Center"
-              HorizontalAlignment="Center"
-                     Height="400"
-                     Margin="0,0,0,0"
+              HorizontalAlignment="Left"
+                     Height="470"
+                     Margin="55,0,0,0"
                      >
 
+            <DataGrid x:Name="DeliveriesDG"
+                      Background="Transparent"></DataGrid>
+            
             <Border.Background>
                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                   <GradientStop Color="#a9b2c9" Offset="0.1"/>
@@ -69,9 +57,9 @@
             </Border.Background>
 
             <Border.Clip>
-               <RectangleGeometry RadiusX="30"
-                                       RadiusY="30"
-                                       Rect="0,0,850,400"/>
+               <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,850,470"/>
             </Border.Clip>
 
          </Border>

@@ -5,34 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Dashboard.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="630" d:DesignWidth="960">
+             d:DesignHeight="630" d:DesignWidth="960"
+             Loaded="Reports_Loaded">
 
    <Grid Background="#14151f">
       <Grid.RowDefinitions>
-         <RowDefinition Height="100"/>
          <RowDefinition Height="110"/>
          <RowDefinition/>
       </Grid.RowDefinitions>
 
-      <DatePicker HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
-                  Grid.Column="0"
-                  Grid.Row="0"
-                  Margin="350,0,0,0"
-                  CalendarStyle="{StaticResource DatePickerCalendarStyle}"/>
-
-      <DatePicker HorizontalAlignment="Center"
-                  VerticalAlignment="Center"
-                  Grid.Column="1"
-                  Grid.Row="0"
-                  Margin="-350,0,0,0"
-                  CalendarStyle="{StaticResource DatePickerCalendarStyle}"
-                  />
-
-
       <!--Download PDF-->
       <Button x:Name="DownloadReportPdfBtn"
-              Grid.Row="1"
+              Grid.Row="0"
                        VerticalAlignment="Center"
                           HorizontalAlignment="Right"
                           Margin="0,0,50,0"
@@ -47,16 +31,33 @@
 
       </Button>
 
+      <!--Add delivery-->
+      <Button x:Name="AddReportPdfBtn"
+                 Grid.Column="0"
+                       VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                       Height="60"
+                       Width="170"
+                          Content="➕ DODAJ"
+                          FontSize="25"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                       Style="{StaticResource ButtonHoverTheme_Blue}"
+                          >
+
+      </Button>
+
       <!--Raport-->
       <Border Width="850"
               Grid.Row="2"
-              Grid.ColumnSpan="2"
               VerticalAlignment="Center"
               HorizontalAlignment="Center"
-                     Height="380"
-                     Margin="0,0,0,0"
+                     Height="470"
                      >
 
+         <DataGrid x:Name="ReportDG"
+                   Background="Transparent"></DataGrid>
+         
          <Border.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                <GradientStop Color="#a9b2c9" Offset="0.1"/>
@@ -66,9 +67,9 @@
          </Border.Background>
 
          <Border.Clip>
-            <RectangleGeometry RadiusX="30"
-                                       RadiusY="30"
-                                       Rect="0,0,850,380"/>
+            <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,850,470"/>
          </Border.Clip>
 
       </Border>
