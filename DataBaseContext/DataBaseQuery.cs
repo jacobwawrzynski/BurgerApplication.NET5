@@ -242,7 +242,7 @@ namespace DataBaseContext
             }
 
         }
-        public static List<Invoice> DownloadInvoice()
+        public static List<Invoice> DownloadInvoices()
         {
             using (var db = new AppDbContext())
             {
@@ -256,7 +256,26 @@ namespace DataBaseContext
             {
                 return (from i in db.Invoices
                         where i.Id == index
-                        select i).LastOrDefault();
+                        orderby i.Id
+                        select i).FirstOrDefault();
+            }
+        }
+        public static List<Report> DownloadReports()
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from r in db.Reports
+                        select r).ToList();
+            }
+        }
+        public static Report DownloadReportsAt(int index)
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from r in db.Reports
+                        where r.Id == index
+                        orderby r.Id
+                        select r).FirstOrDefault();
             }
         }
     }

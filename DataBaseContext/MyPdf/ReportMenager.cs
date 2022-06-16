@@ -11,74 +11,64 @@ using PdfSharp.Pdf.IO;
 
 namespace DataBaseContext.MyPdf
 {
-    public class InvoiceMenager
+    public class ReportMenager
     {
-        public string name = "";
-        private decimal discount;
-        Order order;
-        Staff staff;
-        Staff owner;
+        DateTime date;
         Restaurant restaurant;
-        Address address;
-
-        Dictionary<Product, int> products = new Dictionary<Product, int>();
-        public InvoiceMenager(Order order)
+        Dictionary<(Entities.Product, decimal), int> ProdDis;
+        public ReportMenager(DateTime date, Restaurant restaurant)
         {
-            this.order = order;
+            this.date = date;
+            this.restaurant = restaurant;
             Initialize();
         }
+
         private void Initialize()
         {
-            List<Product> p = DataBaseQuery.DownloadProductsFromOrder(order);
-            foreach (var item in p)
-            {
-                if (products.TryAdd(item, 1))
-                    continue;
-                else
-                    products[item]++;
-            }
-            int numer;
+            ProdDis = new Dictionary<(Product, decimal), int>();
+            var orders = new List<Order>();
             using (var db = new AppDbContext())
             {
-                discount = (from dc in db.Discount_Codes
-                            where dc.Id == order.Id_Discount_Code
-                            select dc.Percent).FirstOrDefault();
-                numer = (from i in db.Invoices
-                         where i.Date == order.Date
-                         select i.Id).Count();
-                staff = (from s in db.Staff
-                         where s.Id == order.Id_Staff
-                         select s).FirstOrDefault();
-                owner = (from s in db.Staff
-                         where (s.Id_Restaurant == staff.Id_Restaurant && s.Role == "Owner")
-                         select s).FirstOrDefault();
-                restaurant = (from r in db.Restaurants
-                              where r.Id == order.Id_Staff
-                              select r).FirstOrDefault();
-                address = (from a in db.Addresses
-                           where a.Id == order.Id_Staff
-                           select a).FirstOrDefault();
-                numer = (from i in db.Invoices
-                         select i).Count();
-            }
-            name = $"{numer}/{order.Date.Day}/{order.Date.Month}/{order.Date.Year}";
+                orders = (from o in db.Orders
+                          join s in db.Staff on o.Id_Staff equals s.Id
+                          where (o.Date.Year == date.Year && o.Date.Month == date.Month && o.Date.Day == date.Day && s.Id_Restaurant == restaurant.Id)
+                          select o).ToList();
 
-            //var pdf = GeneratePdf();
-            //Entities.Invoice invoice = new Entities.Invoice();
-            //invoice.File = PdfMenager.PdfToByteArray(pdf);
-            //DataBaseQuery.AddInvoiceToDataBase(invoice);
+            }
+            foreach (var o in orders)
+            {
+                using (var db = new AppDbContext())
+                {
+                    var prod = (from p in db.Products
+                                join po in db.Products_Orders on p.Id equals po.Id_Product
+                                where po.Id_Order == o.Id
+                                select p).ToList();
+                    var orderDis = (from d in db.Discount_Codes
+                                    where d.Id == o.Id_Discount_Code
+                                    select d.Percent).FirstOrDefault();
+                    foreach (var pr in prod)
+                    {
+                        if (ProdDis.TryAdd((pr, orderDis), 1))
+                            continue;
+                        else
+                            ProdDis[(pr, orderDis)]++;
+                    }
+                }
+            }
+
 
         }
+
 
         public PdfDocument GeneratePdf()
         {
-            if (products.Count == 0) throw new Exception("there is no products in order");
+            if (ProdDis == null) throw new NullReferenceException();
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             using (PdfDocument pdf = new PdfDocument())
             {
 
-                int pages = products.Count / 20 + 1;
-                int count = products.Count;
+                int pages = ProdDis.Count / 20 + 1;
+                int count = ProdDis.Count;
                 decimal totalBrutto = 0;
                 decimal totalVat = 0;
                 decimal totalNetto = 0;
@@ -98,15 +88,8 @@ namespace DataBaseContext.MyPdf
                     page = pdf.AddPage();
                     gfx = XGraphics.FromPdfPage(page);
 
-                    gfx.DrawString($"{address.Street} {address.House_Number} {address.Apartment_Number}" +
-                        $",{address.Zip_Code} {address.City}", boldFont, XBrushes.Black, new XPoint(50, 30));
-
-                    gfx.DrawString($"{owner.Name} {owner.Last_Name}", boldFont, XBrushes.Black, new XPoint(50, 45));
-
-                    gfx.DrawString($"Data wystawnienia", boldFont, XBrushes.Black, new XPoint(495, 30));
-                    gfx.DrawString($"{order.Date.ToString("d")}", boldFont, XBrushes.Black, new XPoint(495, 45));
                     currentYposion_values = 150;
-                    gfx.DrawString($"Faktura nr {this.name}", TitfleFont, XBrushes.Black, new XPoint(200, currentYposion_values));
+                    gfx.DrawString($"Raport z dnia {date.ToString("D")} z restauracji nr{restaurant.Id}", TitfleFont, XBrushes.Black, new XPoint(70, currentYposion_values));
                     currentYposion_values += 30;
                     gfx.DrawLine(pen, new XPoint(lineHorizontalStrat, currentYposion_values - 10), new XPoint(lineHorizontalEnd, currentYposion_values - 10));
 
@@ -138,18 +121,19 @@ namespace DataBaseContext.MyPdf
                     currentYposion_values += 20;
                     gfx.DrawLine(pen, new XPoint(lineHorizontalStrat, currentYposion_values - 10), new XPoint(lineHorizontalEnd, currentYposion_values - 10));
                     int c = count > 20 ? 20 : count;
-                    var keys = products.Keys.ToList();
+                    var keys = ProdDis.Keys.ToList();
                     for (int j = 0; j < c; j++)
                     {
-                        decimal brutto = (decimal)keys[i * 20 + j].Price * (decimal)products[keys[i * 20 + j]] * (1 - (discount / 100));
+                        decimal brutto = (decimal)keys[i * 20 + j].Item1.Price * (decimal)ProdDis[keys[i * 20 + j]] * (1 - ((decimal)keys[i * 20 + j].Item2 / 100));
                         decimal netto = (brutto * (decimal)(0.92));
                         totalBrutto += brutto;
                         totalNetto += netto;
                         totalVat += (brutto - netto);
+
                         gfx.DrawString((i * 20 + j + 1).ToString(), font, XBrushes.Black, new XPoint(20, currentYposion_values));
-                        gfx.DrawString(keys[i * 20 + j].Name, font, XBrushes.Black, new XPoint(50, currentYposion_values));
-                        gfx.DrawString(products[keys[i * 20 + j]].ToString(), font, XBrushes.Black, new XPoint(145, currentYposion_values));
-                        gfx.DrawString(discount.ToString(), font, XBrushes.Black, new XPoint(185, currentYposion_values));
+                        gfx.DrawString(keys[i * 20 + j].Item1.Name, font, XBrushes.Black, new XPoint(50, currentYposion_values));
+                        gfx.DrawString(ProdDis[keys[i * 20 + j]].ToString(), font, XBrushes.Black, new XPoint(145, currentYposion_values));
+                        gfx.DrawString(keys[i * 20 + j].Item2.ToString(), font, XBrushes.Black, new XPoint(185, currentYposion_values));
                         gfx.DrawString("8", font, XBrushes.Black, new XPoint(255, currentYposion_values));
                         gfx.DrawString($"{netto:f2}", font, XBrushes.Black, new XPoint(300, currentYposion_values));
                         gfx.DrawString(($"{(brutto - netto):f2}").ToString(), font, XBrushes.Black, new XPoint(400, currentYposion_values));
@@ -182,14 +166,8 @@ namespace DataBaseContext.MyPdf
                 gfx.DrawLine(pen, new XPoint(495, currentYposion_values - 10), new XPoint(495, currentYposion_values + 8.5));
                 gfx.DrawLine(pen, new XPoint(570, currentYposion_values - 10), new XPoint(570, currentYposion_values + 8.5));
                 gfx.DrawLine(pen, new XPoint(245, currentYposion_values + 8), new XPoint(lineHorizontalEnd, currentYposion_values + 8));
-
-                gfx.DrawString(($"Wystawił:").ToString(), font, XBrushes.Black, new XPoint(50, currentYposion_values + 70));
-                gfx.DrawString(($"{staff.Name} {staff.Last_Name}").ToString(), font, XBrushes.Black, new XPoint(50, currentYposion_values + 90));
-                gfx.DrawString(($"Odebrał:").ToString(), font, XBrushes.Black, new XPoint(500, currentYposion_values + 70));
                 return pdf;
             }
-
         }
-       
     }
 }
