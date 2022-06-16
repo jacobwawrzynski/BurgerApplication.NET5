@@ -7,15 +7,22 @@ using Bogus;
 
 namespace DataBaseContext.random
 {
+    /// <summary>
+    /// RandomAddress Class
+    /// </summary>
     public static class RandomAddress
     {
+        /// <summary>
+        /// Generate new Address with random data
+        /// </summary>
+        /// <returns>new Address</returns>
         static public Entities.Address Generate()
         {
             var faker = new Faker("pl");
             var add = new Entities.Address();
             add.City = faker.Address.City();
             add.Zip_Code = faker.Random.Replace("##-###").ToString();
-            add.Street = faker.Address.StreetName().OrNull(faker,.1f);
+            add.Street = faker.Address.StreetName().OrNull(faker, .1f);
             add.House_Number = faker.Random.Number(0, 150).ToString();
             add.Apartment_Number = faker.Random.Number(0, 50).ToString().OrNull(faker, .7f);
             string[] House_NumberPostFixs = { "a", "b", "c", "d" };

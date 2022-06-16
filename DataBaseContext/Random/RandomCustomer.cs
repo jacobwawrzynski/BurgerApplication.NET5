@@ -9,8 +9,15 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.random
 {
+    /// <summary>
+    ///  RandomCustomer Class
+    /// </summary>
     public static class RandomCustomer
     {
+        /// <summary>
+        /// Generate new Customer with random data
+        /// </summary>
+        /// <returns>new Customer</returns>
         static public Entities.Customer Generate()
         {
             var faker = new Faker("pl");

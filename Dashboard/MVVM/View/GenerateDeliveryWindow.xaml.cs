@@ -41,14 +41,12 @@ namespace Dashboard.MVVM.View
             WindowState = WindowState.Minimized;
         }
 
-        private void GenerateBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (txtName.Text == "" || txtAmount.Text == "") return;
             DeliveryMenager.Add(txtName.Text, int.Parse(txtAmount.Text));
+            txtName.Text = "";
+            txtAmount.Text = "";
         }
     }
 }

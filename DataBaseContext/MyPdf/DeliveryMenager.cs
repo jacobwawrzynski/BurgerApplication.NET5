@@ -16,17 +16,18 @@ namespace DataBaseContext.MyPdf
 
         DateTime date = DateTime.Now;
         List<(string, int)> dostawa = new List<(string, int)>();
-        public Restaurant restaurant { get; private set; }
         public DeliveryMenager(Restaurant restaurant, DateTime date)
         {
             this.date = date;
             this.restaurant = restaurant;
         }
+
         public DeliveryMenager(Restaurant restaurant)
         {
             this.restaurant = restaurant;
         }
 
+        public Restaurant restaurant { get; private set; }
         public void Add(string name, int value)
         {
             dostawa.Add((name, value));
@@ -34,10 +35,6 @@ namespace DataBaseContext.MyPdf
         public void Clear()
         {
             dostawa.Clear();
-        }
-        public bool IsEmpty()
-        {
-            return dostawa.Count == 0;
         }
         public PdfDocument GeneratePdf()
         {
@@ -108,6 +105,11 @@ namespace DataBaseContext.MyPdf
                 }
                 return pdf;
             }
+        }
+
+        public bool IsEmpty()
+        {
+            return dostawa.Count == 0;
         }
     }
 }

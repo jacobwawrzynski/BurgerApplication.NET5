@@ -10,8 +10,15 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.random
 {
+    /// <summary>
+    /// RandomStaff Class
+    /// </summary>
    public static class RandomStaff
    {
+      /// <summary>
+      /// Generate new Staff with random data
+      /// </summary>
+      /// <returns>new Staff</returns>
       static public Entities.Staff Generate()
       {
          var faker = new Faker("pl");

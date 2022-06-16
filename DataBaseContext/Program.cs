@@ -28,12 +28,12 @@ namespace DataBaseContext
             //    DataBaseQuery.AddProduct_OrderToDataBase(random.RandomProduct_Order.Generate());
             //}
 
-            Staff staff = random.RandomStaff.Generate();
-            staff.Login = "Admin";
-            staff.Password = Security.Encryption.ComputeHash("Admin", "SHA512", null);
-            staff.Role = "Manager";
+            //Staff staff = random.RandomStaff.Generate();
+            //staff.Login = "Admin";
+            //staff.Password = Security.Encryption.ComputeHash("Admin", "SHA512", null);
+            //staff.Role = "Manager";
 
-            DataBaseQuery.AddStaffToDataBase(staff);
+            //DataBaseQuery.AddStaffToDataBase(staff);
 
             #region invoice
             //Order order;
@@ -93,8 +93,8 @@ namespace DataBaseContext
             //Delivery delivery = new Delivery() { File = PdfMenager.PdfToByteArray(pdf), Id_Restaurant = delivaryMenager.restaurant.Id };
             //DataBaseQuery.AddDeliveryToDataBase(delivery);
 
-            //var pdfzbazy = DataBaseQuery.DownloadDelivery().Last().File;
-            //PdfMenager.SavePdf(pdfzbazy, @$"C:\Users\jasie\Desktop\testplz", "dostawa");
+            var pdfzbazy = DataBaseQuery.DownloadDelivery().Last().File;
+            PdfMenager.SavePdf(pdfzbazy, @$"C:\Users\jasie\Desktop\testplz", "dostawaZaplikacji");
             #endregion
 
             #region image

@@ -12,6 +12,33 @@ namespace DataBaseContext.MyPdf
 {
     public static class PdfMenager
     {
+        public static Image ByteArrayToImage(byte[] arr)
+        {
+            using (var ms = new MemoryStream(arr))
+            {
+                return Image.FromStream(ms);
+            }
+        }
+
+        public static PdfDocument ByteArrayToPdf(byte[] arr)
+        {
+            MemoryStream stream = new MemoryStream(arr);
+            PdfDocument pdf = PdfReader.Open(stream);
+            return pdf;
+        }
+
+        public static byte[] ImageToByteArray(Image image)
+        {
+            byte[] fileContents = null;
+            using (MemoryStream stream = new MemoryStream())
+            {
+                image.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                fileContents = stream.ToArray();
+            }
+            return fileContents;
+
+        }
+
         public static byte[] PdfToByteArray(PdfDocument pdf)
         {
             byte[] fileContents = null;
@@ -21,12 +48,6 @@ namespace DataBaseContext.MyPdf
                 fileContents = stream.ToArray();
             }
             return fileContents;
-        }
-        public static PdfDocument ByteArrayToPdf(byte[] arr)
-        {
-            MemoryStream stream = new MemoryStream(arr);
-            PdfDocument pdf = PdfReader.Open(stream);
-            return pdf;
         }
         public static void SavePdf(PdfDocument pdf, string path) //"folder\plik.pdf"
         {
@@ -46,24 +67,19 @@ namespace DataBaseContext.MyPdf
             var pdf = ByteArrayToPdf(arr);
             pdf.Save(path + @$"\{filename}.pdf");
         }
+        public static bool TrySavePdf(byte[] arr, string path, string filename) //"folder" , "plik.pdf"
+        {
+            try
+            {
+                var pdf = ByteArrayToPdf(arr);
+                pdf.Save(path + @$"\{filename}.pdf");
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
-        public static byte[] ImageToByteArray(Image image)
-        {
-            byte[] fileContents = null;
-            using (MemoryStream stream = new MemoryStream())
-            {
-                image.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
-                fileContents = stream.ToArray();
-            }
-            return fileContents;
-           
-        }
-        public static Image ByteArrayToImage(byte[] arr)
-        {
-            using (var ms = new MemoryStream(arr))
-            {
-                return Image.FromStream(ms);
-            }
+            return true;
         }
     }
 }

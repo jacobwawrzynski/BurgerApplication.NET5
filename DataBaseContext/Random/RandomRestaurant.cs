@@ -8,8 +8,15 @@ using DataBaseContext.Entities;
 
 namespace DataBaseContext.random
 {
+    /// <summary>
+    /// RandomRestaurant Class
+    /// </summary>
     public static class RandomRestaurant
     {
+        /// <summary>
+        /// Generate new Restaurant with random data
+        /// </summary>
+        /// <returns>new Restaurant</returns>
         static public Entities.Restaurant Generate()
         {
             var faker = new Faker("pl");

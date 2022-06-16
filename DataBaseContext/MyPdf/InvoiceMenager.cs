@@ -14,62 +14,19 @@ namespace DataBaseContext.MyPdf
     public class InvoiceMenager
     {
         public string name = "";
+        Address address;
         private decimal discount;
         Order order;
-        Staff staff;
         Staff owner;
-        public Restaurant restaurant { get; private set; }
-        Address address;
-
         Dictionary<Product, int> products = new Dictionary<Product, int>();
+        Staff staff;
         public InvoiceMenager(Order order)
         {
             this.order = order;
             Initialize();
         }
-        private void Initialize()
-        {
-            List<Product> p = DataBaseQuery.DownloadProductsFromOrder(order);
-            foreach (var item in p)
-            {
-                if (products.TryAdd(item, 1))
-                    continue;
-                else
-                    products[item]++;
-            }
-            int numer;
-            using (var db = new AppDbContext())
-            {
-                discount = (from dc in db.Discount_Codes
-                            where dc.Id == order.Id_Discount_Code
-                            select dc.Percent).FirstOrDefault();
-                numer = (from i in db.Invoices
-                         where i.Date == order.Date
-                         select i.Id).Count();
-                staff = (from s in db.Staff
-                         where s.Id == order.Id_Staff
-                         select s).FirstOrDefault();
-                owner = (from s in db.Staff
-                         where (s.Id_Restaurant == staff.Id_Restaurant && s.Role == "Owner")
-                         select s).FirstOrDefault();
-                restaurant = (from r in db.Restaurants
-                              where r.Id == order.Id_Staff
-                              select r).FirstOrDefault();
-                address = (from a in db.Addresses
-                           where a.Id == order.Id_Staff
-                           select a).FirstOrDefault();
-                numer = (from i in db.Invoices
-                         select i).Count();
-            }
-            name = $"{numer}/{order.Date.Day}/{order.Date.Month}/{order.Date.Year}";
 
-            //var pdf = GeneratePdf();
-            //Entities.Invoice invoice = new Entities.Invoice();
-            //invoice.File = PdfMenager.PdfToByteArray(pdf);
-            //DataBaseQuery.AddInvoiceToDataBase(invoice);
-
-        }
-
+        public Restaurant restaurant { get; private set; }
         public PdfDocument GeneratePdf()
         {
             if (products.Count == 0) throw new Exception("there is no products in order");
@@ -108,7 +65,7 @@ namespace DataBaseContext.MyPdf
 
                     double width = image.PixelWidth * 72 / image.HorizontalResolution;
                     double height = image.PixelHeight * 72 / image.HorizontalResolution;
-                    gfx.DrawImage(image, page.Width/2 -50, 20, 100, 100);
+                    gfx.DrawImage(image, page.Width / 2 - 50, 20, 100, 100);
                     //
 
                     gfx.DrawString($"{address.Street} {address.House_Number} {address.Apartment_Number}" +
@@ -201,6 +158,49 @@ namespace DataBaseContext.MyPdf
                 gfx.DrawString(($"Odebrał:").ToString(), font, XBrushes.Black, new XPoint(500, currentYposion_values + 70));
                 return pdf;
             }
+
+        }
+
+        private void Initialize()
+        {
+            List<Product> p = DataBaseQuery.DownloadProductsFromOrder(order);
+            foreach (var item in p)
+            {
+                if (products.TryAdd(item, 1))
+                    continue;
+                else
+                    products[item]++;
+            }
+            int numer;
+            using (var db = new AppDbContext())
+            {
+                discount = (from dc in db.Discount_Codes
+                            where dc.Id == order.Id_Discount_Code
+                            select dc.Percent).FirstOrDefault();
+                numer = (from i in db.Invoices
+                         where i.Date == order.Date
+                         select i.Id).Count();
+                staff = (from s in db.Staff
+                         where s.Id == order.Id_Staff
+                         select s).FirstOrDefault();
+                owner = (from s in db.Staff
+                         where (s.Id_Restaurant == staff.Id_Restaurant && s.Role == "Owner")
+                         select s).FirstOrDefault();
+                restaurant = (from r in db.Restaurants
+                              where r.Id == order.Id_Staff
+                              select r).FirstOrDefault();
+                address = (from a in db.Addresses
+                           where a.Id == order.Id_Staff
+                           select a).FirstOrDefault();
+                numer = (from i in db.Invoices
+                         select i).Count();
+            }
+            name = $"{numer}/{order.Date.Day}/{order.Date.Month}/{order.Date.Year}";
+
+            //var pdf = GeneratePdf();
+            //Entities.Invoice invoice = new Entities.Invoice();
+            //invoice.File = PdfMenager.PdfToByteArray(pdf);
+            //DataBaseQuery.AddInvoiceToDataBase(invoice);
 
         }
     }
