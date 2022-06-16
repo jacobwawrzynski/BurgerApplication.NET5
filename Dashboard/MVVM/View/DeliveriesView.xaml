@@ -71,7 +71,7 @@
                           HorizontalAlignment="Center"
                        Height="60"
                        Width="250"
-                          Content="DOSTAWY PDF"
+                          Content="GENERUJ"
                           FontSize="25"
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"

@@ -1,6 +1,9 @@
-﻿using DataBaseContext.Entities;
+﻿using DataBaseContext;
+using DataBaseContext.Entities;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +24,7 @@ namespace Dashboard.MVVM.View
    /// </summary>
    public partial class SalesView : UserControl
    {
+
       public SalesView()
       {
          InitializeComponent();
@@ -56,14 +60,11 @@ namespace Dashboard.MVVM.View
 
             var alerg = (from pa
                          in db.Products_Allergens
-                         join a in db.Allergens on pa.Id_Allergen equals a.Id
+                         join a in db.Allergens
+                         on pa.Id_Allergen 
+                         equals a.Id
                          where pa.Id_Product == idProd
                          select a).ToList();
-
-            //var al = (from algn
-            //         in db.Allergens
-            //         where allergen.Id == pr_al
-            //         select algn.Name).FirstOrDefault();
 
             string str = "";
             if (ProductsDG.SelectedItems.Count == 1)
@@ -80,6 +81,14 @@ namespace Dashboard.MVVM.View
          }
 
          
+      }
+
+      public static List<Product> pr = new List<Product>();
+      private void PlaceOrderBtn_Click(object sender, RoutedEventArgs e)
+      {
+         Product product = ProductsDG.SelectedItem as Product;
+         pr.Add(product);
+
       }
    }
 }

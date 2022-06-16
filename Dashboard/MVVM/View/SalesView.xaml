@@ -13,7 +13,7 @@
    <StackPanel Orientation="Vertical">
       <StackPanel Background="#14151f">
          <Border Width="850"
-                       Height="380"
+                       Height="300"
                        Margin="45"
                        Opacity="1"
                        >
@@ -35,154 +35,34 @@
             </Border.Background>
 
             <Border.Clip>
-               <RectangleGeometry RadiusX="20"
-                                        RadiusY="20"
+               <RectangleGeometry RadiusX="10"
+                                        RadiusY="10"
                                         Rect="0,0,850,380"/>
             </Border.Clip>
 
          </Border>
       </StackPanel>
-      <!--List with products-->
-      <!--<ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                    VerticalScrollBarVisibility="Hidden"
-                    >
-         <StackPanel Background="#14151f"
-                     Orientation="Vertical">
-            <StackPanel Orientation="Vertical"
-                        Width="480">
-
-               <Border Width="380"
-                       Height="250"
-                       Margin="45"
-                       Opacity="0.6"
-                       Style="{StaticResource BorderAnimation}">
-
-                 
-
-                  <Border.Background>
-                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#856b2e" Offset="0.0"/>
-                        <GradientStop Color="#f5aa2a" Offset="1"/>
-                     </LinearGradientBrush>
-                  </Border.Background>
-
-                  <Border.Clip>
-                     <RectangleGeometry RadiusX="20"
-                                        RadiusY="20"
-                                        Rect="0,0,380,250"/>
-                  </Border.Clip>
-
-               </Border>
-               <Border Width="380"
-                       Height="250"
-                       Margin="45"
-                       Opacity="0.6"
-                       Style="{StaticResource BorderAnimation}">
-
-                  <Border.Background>
-                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#59481f" Offset="0.0"/>
-                        <GradientStop Color="#f5aa2a" Offset="1"/>
-                     </LinearGradientBrush>
-                  </Border.Background>
-
-                  <Border.Clip>
-                     <RectangleGeometry RadiusX="20"
-                                        RadiusY="20"
-                                        Rect="0,0,380,250"/>
-                  </Border.Clip>
-
-               </Border>
-               <Border Width="380"
-                       Height="250"
-                       Margin="45"
-                       Opacity="0.6"
-                       Style="{StaticResource BorderAnimation}">
-
-                  <Border.Background>
-                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#59481f" Offset="0.0"/>
-                        <GradientStop Color="#f5aa2a" Offset="1"/>
-                     </LinearGradientBrush>
-                  </Border.Background>
-
-                  <Border.Clip>
-                     <RectangleGeometry RadiusX="20"
-                                        RadiusY="20"
-                                        Rect="0,0,380,250"/>
-                  </Border.Clip>
-
-               </Border>
-               <Border Width="380"
-                       Height="250"
-                       Margin="45"
-                       Opacity="0.6"
-                       Style="{StaticResource BorderAnimation}">
-
-                  <Border.Background>
-                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                        <GradientStop Color="#59481f" Offset="0.0"/>
-                        <GradientStop Color="#f5aa2a" Offset="1"/>
-                     </LinearGradientBrush>
-                  </Border.Background>
-
-                  <Border.Clip>
-                     <RectangleGeometry RadiusX="20"
-                                        RadiusY="20"
-                                        Rect="0,0,380,250"/>
-                  </Border.Clip>
-
-               </Border>
-            </StackPanel>
-
-         </StackPanel>
-      </ScrollViewer>-->
+      
 
       <StackPanel Background="#14151f"
-                  Orientation="Vertical" Height="160"
+                  Orientation="Vertical" Height="240"
                    >
-         <!--<Border Width="400"
-                       Height="300"
-                       Margin="20,20,50,0">
 
-            <Border BorderBrush="White"
-                    BorderThickness="0,0,0,2"
-                       Height="65"
-                    VerticalAlignment="Top" Margin="15,-15,10,0">
-
-
-               <TextBlock FontFamily="/Fonts/#JosefinSans"
-                       Text="Zamówienie"
-                       FontWeight="Medium"
-                       Foreground="White"
-                       FontSize="30"
-                          HorizontalAlignment="Left"
-                          VerticalAlignment="Center"
-                          Margin="10,20,0,-2"
-                       Height="45"
-                       >
-
-               </TextBlock>
-
-
-            </Border>
-
-
-            <Border.Background>
-               <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                  <GradientStop Color="#27a1e8" Offset="0.0"/>
-                  <GradientStop Color="#0c44ed" Offset="1"/>
-               </LinearGradientBrush>
-            </Border.Background>
-
-            <Border.Clip>
-               <RectangleGeometry RadiusX="20"
-                                        RadiusY="20"
-                                        Rect="0,0,400,350"/>
-            </Border.Clip>
-
-         </Border>-->
-         
+         <!--Donload PDF-->
+         <Button x:Name="DownloadInvoicePdfBtn"
+                       VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                          Margin="40,0,0,20"
+                       Height="60"
+                       Width="250"
+                          Content="ZAMÓW"
+                          FontSize="25"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                       Style="{StaticResource ButtonHoverTheme_Blue}"
+                          Click="PlaceOrderBtn_Click">
+            
+         </Button>
 
          <Border Width="800"
                        Height="45"
@@ -230,13 +110,15 @@
             
             
             <Border.Clip>
-               <RectangleGeometry RadiusX="20"
-                                        RadiusY="20"
+               <RectangleGeometry RadiusX="10"
+                                        RadiusY="10"
                                         Rect="0,0,800,85"/>
 
             </Border.Clip>
 
-            <TextBlock x:Name="AllergensTB">
+            <TextBlock x:Name="AllergensTB"
+                       Foreground="White"
+                       FontSize="30">
                
             </TextBlock>
             

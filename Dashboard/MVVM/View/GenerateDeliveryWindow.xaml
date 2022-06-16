@@ -93,7 +93,7 @@
                           Margin="0,20,0,0"
                        Height="40"
                        Width="170"
-                          Content="GENERUJ"
+                          Content="➕ DODAJ"
                           FontSize="17"
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"

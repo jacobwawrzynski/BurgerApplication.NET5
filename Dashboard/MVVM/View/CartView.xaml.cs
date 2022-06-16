@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataBaseContext.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace Dashboard.MVVM.View
       public CartView()
       {
          InitializeComponent();
+      }
+
+      private void Summary_Loaded(object sender, RoutedEventArgs e)
+      {
+         SummaryDG.ItemsSource = SalesView.pr;
       }
    }
 }
