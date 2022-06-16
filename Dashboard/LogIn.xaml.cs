@@ -56,7 +56,7 @@ namespace Dashboard
                            where s.Login == txtLogin.Text.ToString()
                            select s).FirstOrDefault();
 
-                if (user != null || Encryption.VerifyHash(txtPassword.Password, "SHA512", user.Password))
+                if (user != null && Encryption.VerifyHash(txtPassword.Password, "SHA512", user.Password))
                 {
                     var res = (from r in db.Restaurants
                                where r.Id == user.Id_Restaurant

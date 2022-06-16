@@ -54,7 +54,8 @@ namespace Dashboard.MVVM.View
             if (GenerateDeliveryWindow.DeliveryMenager.IsEmpty()) return;
             var pdf = GenerateDeliveryWindow.DeliveryMenager.GeneratePdf();
             Delivery delivery = new Delivery() { File = PdfMenager.PdfToByteArray(pdf),Id_Restaurant = session.restaurant.Id };
-            DataBaseQuery.AddDeliveryToDataBase(delivery);
+            if(!DataBaseQuery.AddDeliveryToDataBase(delivery))
+                MessageBox.Show("Error");
             GenerateDeliveryWindow.DeliveryMenager.Clear();
         }
     }
