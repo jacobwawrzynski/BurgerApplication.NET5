@@ -8,8 +8,15 @@ using DataBaseContext.Entities;
 
 namespace DataBaseContext.random
 {
+    /// <summary>
+    /// RandomProduct_Order Class
+    /// </summary>
     public static class RandomProduct_Order
     {
+        /// <summary>
+        /// Generate new Product_Order with random data
+        /// </summary>
+        /// <returns>new Product_Order</returns>
         static public Entities.Product_Order Generate()
         {
             var faker = new Faker("pl");

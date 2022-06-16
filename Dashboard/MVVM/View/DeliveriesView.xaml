@@ -79,6 +79,20 @@
                           >
 
          </Button>
-      </Grid>
+            <Button x:Name="DownloadDelivery"
+                 Grid.Column="2"
+                       VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                       Height="60"
+                       Width="250"
+                          Content="Download"
+                          FontSize="25"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                       Style="{StaticResource ButtonHoverTheme_Blue}" Click="DownloadDelivery_Click"
+                          >
+
+            </Button>
+        </Grid>
    </Grid>
 </UserControl>

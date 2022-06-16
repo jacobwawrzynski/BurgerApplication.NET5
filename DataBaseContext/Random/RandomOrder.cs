@@ -8,8 +8,15 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.random
 {
+    /// <summary>
+    /// RandomOrder Class
+    /// </summary>
     public static class RandomOrder
     {
+        /// <summary>
+        /// Generate new Order with random data
+        /// </summary>
+        /// <returns>new Order</returns>
         public static Entities.Order Generate()
         {
             var faker = new Faker("pl");
@@ -33,7 +40,7 @@ namespace DataBaseContext.random
                 if (customers.Count != 0)
                     order.Id_Customer = customers[idCustomer].OrNull(faker, .7f);
                 if (discount_codes.Count != 0 && (discount_codes[idDiscount_code].Quantity == null || discount_codes[idDiscount_code].Quantity > 0))
-                order.Id_Discount_Code = discount_codes[idDiscount_code].Id.OrNull(faker, .7f);
+                    order.Id_Discount_Code = discount_codes[idDiscount_code].Id.OrNull(faker, .7f);
             }
             order.Date = faker.Date.Past(1, DateTime.Now);
 

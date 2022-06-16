@@ -14,7 +14,6 @@ namespace DataBaseContext.MyPdf
     public class ReportMenager
     {
         DateTime date;
-        public Restaurant restaurant { get; private set; }
         Dictionary<(Entities.Product, decimal), int> ProdDis;
         public ReportMenager(DateTime date, Restaurant restaurant)
         {
@@ -23,43 +22,7 @@ namespace DataBaseContext.MyPdf
             Initialize();
         }
 
-        private void Initialize()
-        {
-            ProdDis = new Dictionary<(Product, decimal), int>();
-            var orders = new List<Order>();
-            using (var db = new AppDbContext())
-            {
-                orders = (from o in db.Orders
-                          join s in db.Staff on o.Id_Staff equals s.Id
-                          where (o.Date.Year == date.Year && o.Date.Month == date.Month && o.Date.Day == date.Day && s.Id_Restaurant == restaurant.Id)
-                          select o).ToList();
-
-            }
-            foreach (var o in orders)
-            {
-                using (var db = new AppDbContext())
-                {
-                    var prod = (from p in db.Products
-                                join po in db.Products_Orders on p.Id equals po.Id_Product
-                                where po.Id_Order == o.Id
-                                select p).ToList();
-                    var orderDis = (from d in db.Discount_Codes
-                                    where d.Id == o.Id_Discount_Code
-                                    select d.Percent).FirstOrDefault();
-                    foreach (var pr in prod)
-                    {
-                        if (ProdDis.TryAdd((pr, orderDis), 1))
-                            continue;
-                        else
-                            ProdDis[(pr, orderDis)]++;
-                    }
-                }
-            }
-
-
-        }
-
-
+        public Restaurant restaurant { get; private set; }
         public PdfDocument GeneratePdf()
         {
             if (ProdDis == null) throw new NullReferenceException();
@@ -182,6 +145,42 @@ namespace DataBaseContext.MyPdf
                 gfx.DrawLine(pen, new XPoint(245, currentYposion_values + 8), new XPoint(lineHorizontalEnd, currentYposion_values + 8));
                 return pdf;
             }
+        }
+
+        private void Initialize()
+        {
+            ProdDis = new Dictionary<(Product, decimal), int>();
+            var orders = new List<Order>();
+            using (var db = new AppDbContext())
+            {
+                orders = (from o in db.Orders
+                          join s in db.Staff on o.Id_Staff equals s.Id
+                          where (o.Date.Year == date.Year && o.Date.Month == date.Month && o.Date.Day == date.Day && s.Id_Restaurant == restaurant.Id)
+                          select o).ToList();
+
+            }
+            foreach (var o in orders)
+            {
+                using (var db = new AppDbContext())
+                {
+                    var prod = (from p in db.Products
+                                join po in db.Products_Orders on p.Id equals po.Id_Product
+                                where po.Id_Order == o.Id
+                                select p).ToList();
+                    var orderDis = (from d in db.Discount_Codes
+                                    where d.Id == o.Id_Discount_Code
+                                    select d.Percent).FirstOrDefault();
+                    foreach (var pr in prod)
+                    {
+                        if (ProdDis.TryAdd((pr, orderDis), 1))
+                            continue;
+                        else
+                            ProdDis[(pr, orderDis)]++;
+                    }
+                }
+            }
+
+
         }
     }
 }

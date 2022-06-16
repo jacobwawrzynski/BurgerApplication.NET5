@@ -97,7 +97,7 @@
                           FontSize="17"
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"
-                       Style="{StaticResource ButtonHoverTheme_Blue}" Click="GenerateBtn_Click"
+                       Style="{StaticResource ButtonHoverTheme_Blue}" Click="AddBtn_Click"
                     />
 
          </StackPanel>
