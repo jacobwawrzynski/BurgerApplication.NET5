@@ -20,14 +20,14 @@
       <!--Search box-->
       <Label Content="WYSZUKAJ PO ID 🔍:"
                 Foreground="Orange"
-                Margin="150,20,0,0"
+                Margin="10,20,0,0"
                 FontFamily="/Fonts/#JosefinSans"
                 FontSize="20"
              Grid.ColumnSpan="2"/>
       <TextBox x:Name="SearchBoxEmp"
          Width="100"
                   Height="40"
-                  Margin="200,20,0,0"
+                  Margin="-90,20,0,0"
                   Background="#212340"
                   Foreground="Orange"
                   FontSize="30"
@@ -46,6 +46,9 @@
 
       <StackPanel Grid.Column="0"
                   VerticalAlignment="Center" Margin="0,90,0,10" Height="440">
+
+         
+
          <!--Login -->
 
          <Label Content="LOGIN"
@@ -140,18 +143,18 @@
                   VerticalAlignment="Center"/>
       </StackPanel>
 
-      <StackPanel Grid.Column="1"
-                  VerticalAlignment="Center" Margin="0,90,0,10" Height="440">
+      <StackPanel
+                  VerticalAlignment="Top" Margin="312,30,5,0" Height="508" Grid.ColumnSpan="2">
          <!--PESEL -->
          <Label Content="PESEL"
                 Foreground="Orange"
                 HorizontalAlignment="Center"
                 Margin="0,20,20,0"
                 FontFamily="/Fonts/#JosefinSans"
-                FontSize="20"/>
+                FontSize="17"/>
          <TextBox x:Name="PeselField"
             Width="300"
-                  Height="40"
+                  Height="35"
                   Margin="30,10,50,0"
                   Background="#212340"
                   Foreground="Orange"
@@ -172,10 +175,10 @@
                 HorizontalAlignment="Center"
                 Margin="0,20,20,0"
                 FontFamily="/Fonts/#JosefinSans"
-                FontSize="20"/>
+                FontSize="17"/>
          <TextBox x:Name="EmailField"
             Width="300"
-                  Height="40"
+                  Height="35"
                   Margin="30,10,50,0"
                   Background="#212340"
                   Foreground="Orange"
@@ -195,11 +198,11 @@
                 HorizontalAlignment="Center"
                 Margin="0,20,20,0"
                 FontFamily="/Fonts/#JosefinSans"
-                FontSize="20"/>
+                FontSize="17"/>
          <TextBox x:Name="CreationDateField"
                   IsReadOnly="True"
             Width="300"
-                  Height="40"
+                  Height="35"
                   Margin="30,10,50,0"
                   Background="#212340"
                   Foreground="Orange"
@@ -219,10 +222,10 @@
                 HorizontalAlignment="Center"
                 Margin="0,20,20,0"
                 FontFamily="/Fonts/#JosefinSans"
-                FontSize="20"/>
+                FontSize="17"/>
          <TextBox x:Name="RoleField"
             Width="300"
-                  Height="40"
+                  Height="35"
                   Margin="30,10,50,0"
                   Background="#212340"
                   Foreground="Orange"
@@ -234,10 +237,57 @@
                   BorderThickness="0,0,0,1" 
                   HorizontalAlignment="Center" 
                   VerticalAlignment="Center" />
+
+         <!--Restauracja -->
+
+         <Label Content="RESTAURACJA NR"
+                Foreground="Orange"
+                HorizontalAlignment="Center"
+                Margin="0,20,20,0"
+                FontFamily="/Fonts/#JosefinSans"
+                FontSize="17"/>
+         <TextBox x:Name="RestaurantField"
+            Width="300"
+                  Height="35"
+                  Margin="30,10,50,0"
+                  Background="#212340"
+                  Foreground="Orange"
+                  FontSize="23"
+                  FontFamily="/Fonts/#JosefinSans"
+                  FontWeight="DemiBold"
+                  TextAlignment="Center"
+                  Padding="0,10,0,0"
+                  BorderThickness="0,0,0,1" 
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Center"/>
+
       </StackPanel>
 
-      <StackPanel Grid.Column="2"
-                  VerticalAlignment="Center" Margin="0,30,0,25" Height="485">
+      <StackPanel Grid.Column="1"
+                  VerticalAlignment="Center" Margin="316,0,0,0" Height="545" Grid.ColumnSpan="2">
+
+         <!--Address id -->
+
+         <Label Content="ADRES ID"
+                Foreground="Orange"
+                HorizontalAlignment="Center"
+                Margin="0,10,20,0"
+                FontFamily="/Fonts/#JosefinSans"
+                FontSize="17"/>
+         <TextBox x:Name="AddressField" 
+            Width="300"
+                  Height="30"
+                  Margin="30,10,50,0"
+                  Background="#212340"
+                  Foreground="Orange"
+                  FontSize="23"
+                  FontFamily="/Fonts/#JosefinSans"
+                  FontWeight="DemiBold"
+                  TextAlignment="Center"
+                  Padding="0,10,0,0"
+                  BorderThickness="0,0,0,1" 
+                  HorizontalAlignment="Center" 
+                  VerticalAlignment="Center"/>
 
          <!--City -->
 
@@ -249,7 +299,7 @@
                 FontSize="17"/>
          <TextBox x:Name="CityField"
             Width="300"
-                  Height="35"
+                 Height="30"
                   Margin="30,10,50,0"
                   Background="#212340"
                   Foreground="Orange"
@@ -271,7 +321,7 @@
                 FontSize="17"/>
          <TextBox x:Name="ZipCodeField"
             Width="300"
-                  Height="35"
+                  Height="30"
                   Margin="30,10,50,0"
                   Background="#212340"
                   Foreground="Orange"
@@ -295,7 +345,7 @@
                 FontSize="17"/>
          <TextBox x:Name="StreetField"
             Width="300"
-                  Height="35"
+                  Height="30"
                   Margin="30,10,50,0"
                   Background="#212340"
                   Foreground="Orange"
@@ -318,7 +368,7 @@
                 FontSize="17"/>
          <TextBox x:Name="HouseNumberField"
             Width="300"
-                  Height="35"
+                  Height="30"
                   Margin="30,10,50,0"
                   Background="#212340"
                   Foreground="Orange"
@@ -341,7 +391,7 @@
                 FontSize="17"/>
          <TextBox x:Name="FlatNumberField"
             Width="300"
-                  Height="35"
+                  Height="30"
                   Margin="30,10,50,0"
                   Background="#212340"
                   Foreground="Orange"
@@ -354,6 +404,7 @@
                   HorizontalAlignment="Center" 
                   VerticalAlignment="Center"/>
       </StackPanel>
+
       <!--Buttons-->
       <StackPanel Orientation="Horizontal"
                      HorizontalAlignment="Center"

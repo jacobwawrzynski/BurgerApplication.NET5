@@ -50,6 +50,11 @@ namespace Dashboard.MVVM.View
                              where pr.Id_Address == addresses.Id
                              select addresses).First();
 
+                  var res = (from restaurants
+                             in db.Restaurants
+                             where pr.Id_Restaurant == restaurants.Id_Address
+                             select restaurants).First();
+
                   if (pr != null)
                   {
                      LoginField.Text = pr.Login;
@@ -65,6 +70,8 @@ namespace Dashboard.MVVM.View
                      StreetField.Text = adr.Street;
                      FlatNumberField.Text = adr.Apartment_Number;
                      HouseNumberField.Text = adr.House_Number;
+                     RestaurantField.Text = res.Id_Address.ToString();
+                     AddressField.Text = adr.Id.ToString();
                   }
 
                }
@@ -79,14 +86,7 @@ namespace Dashboard.MVVM.View
          {
             Staff employee = new Staff();
             Address address = new Address();
-
-            address.City = CityField.Text;
-            address.Zip_Code = ZipCodeField.Text;
-            address.Street = StreetField.Text;
-            address.House_Number = HouseNumberField.Text;
-            address.Apartment_Number = FlatNumberField.Text;
-            DataBaseQuery.AddAddressToDataBase(address);
-            db.SaveChanges();
+            Restaurant restaurant = new Restaurant();
 
             employee.Login = LoginField.Text;
             employee.Password = PasswordField.Text;
@@ -94,8 +94,19 @@ namespace Dashboard.MVVM.View
             employee.Last_Name = LastNameField.Text;
             employee.Pesel = PeselField.Text;
             employee.Role = RoleField.Text;
-            employee.Id_Address = address.Id;
+            employee.Id_Address = int.Parse(AddressField.Text);
+            employee.Id_Restaurant = restaurant.Id_Address;
+            DataBaseQuery.AddRestaurantToDataBase(restaurant);
             DataBaseQuery.AddStaffToDataBase(employee);
+
+            address.City = CityField.Text;
+            address.Zip_Code = ZipCodeField.Text;
+            address.Street = StreetField.Text;
+            address.House_Number = HouseNumberField.Text;
+            address.Apartment_Number = FlatNumberField.Text;
+            DataBaseQuery.AddAddressToDataBase(address);
+
+
             
          }
       }
@@ -127,6 +138,16 @@ namespace Dashboard.MVVM.View
                       where employees.Id == int.Parse(SearchBoxEmp.Text)
                       select employees).FirstOrDefault();
 
+            var adr = (from addresses
+                             in db.Addresses
+                       where pr.Id_Address == addresses.Id
+                       select addresses).First();
+
+            var res = (from restaurants
+                            in db.Restaurants
+                       where pr.Id_Restaurant == restaurants.Id_Address
+                       select restaurants).First();
+
             if (pr != null)
             {
                pr.Login = LoginField.Text;
@@ -136,6 +157,13 @@ namespace Dashboard.MVVM.View
                pr.Last_Name = LastNameField.Text;
                pr.Role = RoleField.Text;
                pr.Email = EmailField.Text;
+               adr.Street = StreetField.Text;
+               adr.City = CityField.Text;
+               adr.Apartment_Number = FlatNumberField.Text;
+               adr.House_Number = HouseNumberField.Text;
+               adr.Zip_Code = ZipCodeField.Text;
+               res.Id_Address = int.Parse(RestaurantField.Text);
+               pr.Id_Address = int.Parse(AddressField.Text);
                db.SaveChanges();
             }
 
