@@ -278,5 +278,50 @@ namespace DataBaseContext
                         select r).FirstOrDefault();
             }
         }
+        public static List<Delivery> DownloadDelivery()
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from d in db.Delivery
+                        select d).ToList();
+            }
+        }
+        public static Delivery DownloadDeliveryAt(int index)
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from d in db.Delivery
+                        where d.Id == index
+                        orderby d.Id
+                        select d).FirstOrDefault();
+            }
+        }
+        public static bool AddImageToDataBase(Image image)
+        {
+            try
+            {
+                using (var db = new AppDbContext())
+                {
+                    db.Images.Add(image);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+            return true;
+        }
+        public static Image DownladImage(string name)
+        {
+            using (var db = new AppDbContext())
+            {
+                return (from i in db.Images
+                        where i.Alt_Text == name
+                        orderby i.Id
+                        select i).FirstOrDefault();
+            }
+        }
     }
 }

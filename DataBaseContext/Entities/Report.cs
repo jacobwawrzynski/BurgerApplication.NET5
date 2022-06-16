@@ -13,5 +13,6 @@ namespace DataBaseContext.Entities
         public byte[] File { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime Date { get; set; }
+        public int Id_Restaurant { get; set; }
     }
 }

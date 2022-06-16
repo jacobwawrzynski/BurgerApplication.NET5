@@ -18,7 +18,7 @@ namespace DataBaseContext.MyPdf
         Order order;
         Staff staff;
         Staff owner;
-        Restaurant restaurant;
+        public Restaurant restaurant { get; private set; }
         Address address;
 
         Dictionary<Product, int> products = new Dictionary<Product, int>();
@@ -98,8 +98,21 @@ namespace DataBaseContext.MyPdf
                     page = pdf.AddPage();
                     gfx = XGraphics.FromPdfPage(page);
 
+                    //obrazek
+                    XImage image = null;
+                    var res = DataBaseQuery.DownladImage("burger.png");
+                    using (MemoryStream stream = new MemoryStream(res.ImageData))
+                    {
+                        image = XImage.FromStream(stream);
+                    }
+
+                    double width = image.PixelWidth * 72 / image.HorizontalResolution;
+                    double height = image.PixelHeight * 72 / image.HorizontalResolution;
+                    gfx.DrawImage(image, page.Width/2 -50, 20, 100, 100);
+                    //
+
                     gfx.DrawString($"{address.Street} {address.House_Number} {address.Apartment_Number}" +
-                        $",{address.Zip_Code} {address.City}", boldFont, XBrushes.Black, new XPoint(50, 30));
+                    $",{address.Zip_Code} {address.City}", boldFont, XBrushes.Black, new XPoint(50, 30));
 
                     gfx.DrawString($"{owner.Name} {owner.Last_Name}", boldFont, XBrushes.Black, new XPoint(50, 45));
 
@@ -190,6 +203,5 @@ namespace DataBaseContext.MyPdf
             }
 
         }
-       
     }
 }

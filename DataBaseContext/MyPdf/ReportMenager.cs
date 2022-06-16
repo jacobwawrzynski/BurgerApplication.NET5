@@ -14,7 +14,7 @@ namespace DataBaseContext.MyPdf
     public class ReportMenager
     {
         DateTime date;
-        Restaurant restaurant;
+        public Restaurant restaurant { get; private set; }
         Dictionary<(Entities.Product, decimal), int> ProdDis;
         public ReportMenager(DateTime date, Restaurant restaurant)
         {
@@ -87,6 +87,20 @@ namespace DataBaseContext.MyPdf
                 {
                     page = pdf.AddPage();
                     gfx = XGraphics.FromPdfPage(page);
+
+
+                    //obrazek
+                    XImage image = null;
+                    var res = DataBaseQuery.DownladImage("burger.png");
+                    using (MemoryStream stream = new MemoryStream(res.ImageData))
+                    {
+                        image = XImage.FromStream(stream);
+                    }
+
+                    double width = image.PixelWidth * 72 / image.HorizontalResolution;
+                    double height = image.PixelHeight * 72 / image.HorizontalResolution;
+                    gfx.DrawImage(image, page.Width / 2 - 50, 20, 100, 100);
+                    //
 
                     currentYposion_values = 150;
                     gfx.DrawString($"Raport z dnia {date.ToString("D")} z restauracji nr{restaurant.Id}", TitfleFont, XBrushes.Black, new XPoint(70, currentYposion_values));

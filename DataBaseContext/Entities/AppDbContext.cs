@@ -26,6 +26,7 @@ namespace DataBaseContext.Entities
         public DbSet<Report> Reports { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Staff> Staff { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
