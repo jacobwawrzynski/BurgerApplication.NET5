@@ -11,10 +11,19 @@ using PdfSharp.Pdf.IO;
 
 namespace DataBaseContext.MyPdf
 {
+
+    /// <summary>
+    /// ReportMenager
+    /// </summary>
     public class ReportMenager
     {
         DateTime date;
         Dictionary<(Entities.Product, decimal), int> ProdDis;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="date">date of report</param>
+        /// <param name="restaurant">restaurant</param>
         public ReportMenager(DateTime date, Restaurant restaurant)
         {
             this.date = date;
@@ -23,6 +32,11 @@ namespace DataBaseContext.MyPdf
         }
 
         public Restaurant restaurant { get; private set; }
+        /// <summary>
+        /// create report pdf file
+        /// </summary>
+        /// <returns>pdf file</returns>
+        /// <exception cref="NullReferenceException"></exception>
         public PdfDocument GeneratePdf()
         {
             if (ProdDis == null) throw new NullReferenceException();

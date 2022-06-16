@@ -61,7 +61,6 @@ namespace Dashboard.MVVM.View
             var pdf = GenerateDeliveryWindow.DeliveryMenager.GeneratePdf();
             Delivery delivery = new Delivery() { File = PdfMenager.PdfToByteArray(pdf), Id_Restaurant = session.restaurant.Id };
             DataBaseQuery.AddDeliveryToDataBase(delivery);
-            DeliveriesDG.Items.Refresh();
             GenerateDeliveryWindow.DeliveryMenager.Clear();
             this.Deliveries_Loaded(sender, e);
         }
@@ -71,7 +70,7 @@ namespace Dashboard.MVVM.View
             Delivery delivery = DeliveriesDG.SelectedItem as Delivery;
             if (delivery == null) return;
 
-            PdfMenager.SavePdf(delivery.File, "..", $"{delivery.Date.Year}_{delivery.Date.Month}_{delivery.Date.Day}_{delivery.Id}");
+            PdfMenager.SavePdf(delivery.File, "..", $"Delivery_{delivery.Date.Year}_{delivery.Date.Month}_{delivery.Date.Day}_{delivery.Id}");
         }
 
         private void RefreshDeliveryPdfBtn_Click(object sender, RoutedEventArgs e)

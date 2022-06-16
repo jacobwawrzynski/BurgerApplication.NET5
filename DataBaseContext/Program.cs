@@ -30,9 +30,10 @@ namespace DataBaseContext
 
 
          Staff staff = random.RandomStaff.Generate();
-            staff.Login = "Admin";
+            staff.Login = "Admin11";
             staff.Password = Security.Encryption.ComputeHash("Admin", "SHA512", null);
             staff.Role = "Manager";
+            staff.Id_Restaurant = 11;
 
             DataBaseQuery.AddStaffToDataBase(staff);
 

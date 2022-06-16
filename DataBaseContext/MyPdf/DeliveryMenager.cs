@@ -11,31 +11,54 @@ using PdfSharp.Pdf.IO;
 
 namespace DataBaseContext.MyPdf
 {
+    /// <summary>
+    /// Delivery Menager
+    /// </summary>
     public class DeliveryMenager
     {
 
         DateTime date = DateTime.Now;
         List<(string, int)> dostawa = new List<(string, int)>();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="restaurant">restaurant</param>
+        /// <param name="date">date</param>
         public DeliveryMenager(Restaurant restaurant, DateTime date)
         {
             this.date = date;
             this.restaurant = restaurant;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="restaurant">restaurant</param>
         public DeliveryMenager(Restaurant restaurant)
         {
             this.restaurant = restaurant;
         }
 
         public Restaurant restaurant { get; private set; }
+        /// <summary>
+        /// adds to delivery
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <param name="value">value</param>
         public void Add(string name, int value)
         {
             dostawa.Add((name, value));
         }
+        /// <summary>
+        /// clear delivery list
+        /// </summary>
         public void Clear()
         {
             dostawa.Clear();
         }
+        /// <summary>
+        /// create delivery pdf file
+        /// </summary>
+        /// <returns>pdf file</returns>
         public PdfDocument GeneratePdf()
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);

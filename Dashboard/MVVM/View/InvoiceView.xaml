@@ -5,16 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Dashboard.MVVM.View"
              mc:Ignorable="d" 
-             d:DesignHeight="630" d:DesignWidth="960">
-   
-   <Grid Background="#14151f">
-      <Grid.RowDefinitions>
-         <RowDefinition Height="110"/>
-         <RowDefinition/>
-      </Grid.RowDefinitions>
+             d:DesignHeight="630" d:DesignWidth="960"
+             Loaded="Invoice_Loaded"
+             >
 
-      <!--Add delivery-->
-      <Button x:Name="AddInvoicePdfBtn"
+    <Grid Background="#14151f">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--Add delivery-->
+        <Button x:Name="AddInvoicePdfBtn"
                  Grid.Column="0"
                        VerticalAlignment="Center"
                           HorizontalAlignment="Center"
@@ -28,11 +35,29 @@
                        Style="{StaticResource ButtonHoverTheme_Blue}"
                           >
 
-      </Button>
-      
-      <!--Download PDF-->
-      <Button x:Name="DownloadInvoicePdfBtn"
+        </Button>
+        <!--generuj-->
+        <Button x:Name="GenerateInvoicePfdBtn"
               Grid.Row="0"
+                Grid.Column="1"
+                       VerticalAlignment="Center"
+                          HorizontalAlignment="Right"
+                          Margin="0,0,50,0"
+                       Height="60"
+                       Width="250"
+                          Content="GENERUJ FAKTURE"
+                          FontSize="25"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                       Style="{StaticResource ButtonHoverTheme_Blue}" Click="GenerateInvoicePfdBtn_Click"
+                          >
+
+        </Button>
+
+        <!--Download PDF-->
+        <Button x:Name="DownloadInvoicePdfBtn"
+              Grid.Row="0"
+                Grid.Column="2"
                        VerticalAlignment="Center"
                           HorizontalAlignment="Right"
                           Margin="0,0,50,0"
@@ -42,37 +67,38 @@
                           FontSize="25"
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"
-                       Style="{StaticResource ButtonHoverTheme_Blue}"
+                       Style="{StaticResource ButtonHoverTheme_Blue}" Click="DownloadInvoicePdfBtn_Click"
                           >
 
-      </Button>
+        </Button>
 
-      <!--Raport-->
-      <Border Width="850"
+        <!--Raport-->
+        <Border Width="850"
               Grid.Row="2"
+              Grid.ColumnSpan="3"
               VerticalAlignment="Center"
               HorizontalAlignment="Center"
                      Height="470"
                      >
 
-         <DataGrid x:Name="InvoiceDG"
+            <DataGrid x:Name="InvoiceDG"
                    Background="Transparent"></DataGrid>
 
-         <Border.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-               <GradientStop Color="#a9b2c9" Offset="0.1"/>
-               <GradientStop Color="#808ba6" Offset="0.6"/>
-               <GradientStop Color="#49566e" Offset="1"/>
-            </LinearGradientBrush>
-         </Border.Background>
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#a9b2c9" Offset="0.1"/>
+                    <GradientStop Color="#808ba6" Offset="0.6"/>
+                    <GradientStop Color="#49566e" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
 
-         <Border.Clip>
-            <RectangleGeometry RadiusX="10"
+            <Border.Clip>
+                <RectangleGeometry RadiusX="10"
                                        RadiusY="10"
                                        Rect="0,0,850,470"/>
-         </Border.Clip>
+            </Border.Clip>
 
-      </Border>
+        </Border>
 
-   </Grid>
+    </Grid>
 </UserControl>

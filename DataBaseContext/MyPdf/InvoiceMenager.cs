@@ -11,6 +11,9 @@ using PdfSharp.Pdf.IO;
 
 namespace DataBaseContext.MyPdf
 {
+    /// <summary>
+    /// Invoice Menager
+    /// </summary>
     public class InvoiceMenager
     {
         public string name = "";
@@ -20,6 +23,10 @@ namespace DataBaseContext.MyPdf
         Staff owner;
         Dictionary<Product, int> products = new Dictionary<Product, int>();
         Staff staff;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="order">order</param>
         public InvoiceMenager(Order order)
         {
             this.order = order;
@@ -27,6 +34,11 @@ namespace DataBaseContext.MyPdf
         }
 
         public Restaurant restaurant { get; private set; }
+        /// <summary>
+        /// create invoice pdf file
+        /// </summary>
+        /// <returns>pdf file</returns>
+        /// <exception cref="Exception"></exception>
         public PdfDocument GeneratePdf()
         {
             if (products.Count == 0) throw new Exception("there is no products in order");
