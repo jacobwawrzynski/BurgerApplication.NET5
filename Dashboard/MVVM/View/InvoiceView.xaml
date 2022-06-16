@@ -13,6 +13,23 @@
          <RowDefinition/>
       </Grid.RowDefinitions>
 
+      <!--Add delivery-->
+      <Button x:Name="AddInvoicePdfBtn"
+                 Grid.Column="0"
+                       VerticalAlignment="Center"
+                          HorizontalAlignment="Center"
+                       Height="60"
+                       Width="170"
+                          Content="➕ DODAJ"
+                          FontSize="25"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+              Click="AddInvoicePdfBtn_Click"
+                       Style="{StaticResource ButtonHoverTheme_Blue}"
+                          >
+
+      </Button>
+      
       <!--Download PDF-->
       <Button x:Name="DownloadInvoicePdfBtn"
               Grid.Row="0"
@@ -30,22 +47,6 @@
 
       </Button>
 
-      <!--Add delivery-->
-      <Button x:Name="FakturaPdfBtn"
-                 Grid.Column="0"
-                       VerticalAlignment="Center"
-                          HorizontalAlignment="Center"
-                       Height="60"
-                       Width="170"
-                          Content="FAKTURA"
-                          FontSize="25"
-                         FontFamily="/Fonts/#JosefinSans"
-                               FontWeight="Heavy"
-                       Style="{StaticResource ButtonHoverTheme_Blue}"
-                          >
-
-      </Button>
-
       <!--Raport-->
       <Border Width="850"
               Grid.Row="2"
@@ -54,7 +55,7 @@
                      Height="470"
                      >
 
-         <DataGrid x:Name="ReportDG"
+         <DataGrid x:Name="InvoiceDG"
                    Background="Transparent"></DataGrid>
 
          <Border.Background>

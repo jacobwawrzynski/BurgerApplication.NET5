@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Dashboard.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="630" d:DesignWidth="960"
-             Loaded="Reports_Loaded">
+             >
 
    <Grid Background="#14151f">
       <Grid.RowDefinitions>
@@ -31,21 +31,7 @@
 
       </Button>
 
-      <!--Add delivery-->
-      <Button x:Name="AddReportPdfBtn"
-                 Grid.Column="0"
-                       VerticalAlignment="Center"
-                          HorizontalAlignment="Center"
-                       Height="60"
-                       Width="170"
-                          Content="➕ DODAJ"
-                          FontSize="25"
-                         FontFamily="/Fonts/#JosefinSans"
-                               FontWeight="Heavy"
-                       Style="{StaticResource ButtonHoverTheme_Blue}"
-                          >
-
-      </Button>
+      
 
       <!--Raport-->
       <Border Width="850"
@@ -55,7 +41,7 @@
                      Height="470"
                      >
 
-         <DataGrid x:Name="ReportDG"
+         <DataGrid x:Name="InvoiceDG"
                    Background="Transparent"></DataGrid>
          
          <Border.Background>

@@ -24,5 +24,11 @@ namespace Dashboard.MVVM.View
       {
          InitializeComponent();
       }
+
+      private void AddInvoicePdfBtn_Click(object sender, RoutedEventArgs e)
+      {
+         InvoiceOrderWindow invoiceOrder = new InvoiceOrderWindow();
+         invoiceOrder.Show();
+      }  
    }
 }

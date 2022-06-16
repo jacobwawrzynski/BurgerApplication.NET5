@@ -26,16 +26,7 @@ namespace Dashboard.MVVM.View
          InitializeComponent();
       }
 
-      private void Reports_Loaded(object sender, RoutedEventArgs e)
-      {
-         using (var db = new AppDbContext())
-         {
-            var q = from reports
-                    in db.Reports
-                    select new { reports.Id, reports.File, reports.Date };
 
-            ReportDG.ItemsSource = q.ToList();
-         }
-      }
+
    }
 }
