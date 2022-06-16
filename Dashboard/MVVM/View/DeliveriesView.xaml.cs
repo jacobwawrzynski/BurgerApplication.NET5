@@ -37,5 +37,14 @@ namespace Dashboard.MVVM.View
             DeliveriesDG.ItemsSource = q.ToList();
          }
       }
+
+      private void AddDeliveryBtn_Click(object sender, RoutedEventArgs e)
+      {
+         GenerateDeliveryWindow generateDelivery = new GenerateDeliveryWindow();
+            
+         generateDelivery.Show();
+
+
+      }
    }
 }

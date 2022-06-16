@@ -1,7 +1,5 @@
-﻿using Dashboard.MVVM.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Dashboard
+namespace Dashboard.MVVM.View
 {
    /// <summary>
-   /// Interaction logic for AdminPanel.xaml
+   /// Interaction logic for GenerateDeliveryWindow.xaml
    /// </summary>
-   public partial class AdminPanel : Window
+   public partial class GenerateDeliveryWindow : Window
    {
-      public AdminPanel()
+      public GenerateDeliveryWindow()
       {
          InitializeComponent();
       }
@@ -33,19 +31,12 @@ namespace Dashboard
 
       private void CloseBtn_Click(object sender, RoutedEventArgs e)
       {
-         MainWindow.adminPanelIsOpened = false;
          this.Close();
       }
 
       private void MinimizeBtn_Click(object sender, RoutedEventArgs e)
       {
          WindowState = WindowState.Minimized;
-      }
-
-      protected override void OnClosed(EventArgs e)
-      {
-         base.OnClosed(e);
-         MainWindow.adminPanelIsOpened = false;
       }
    }
 }

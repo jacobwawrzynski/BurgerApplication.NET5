@@ -31,7 +31,7 @@
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"
                        Style="{StaticResource ButtonHoverTheme_Blue}"
-                          >
+                          Click="AddDeliveryBtn_Click">
 
          </Button>
 

@@ -45,15 +45,18 @@ namespace DataBaseContext
         }
         public static bool AddStaffToDataBase(Staff staff)
         {
-            
-               using (var db = new AppDbContext())
-               {
-                  db.Staff.Add(staff);
-                  db.SaveChanges();
-               }
-
-
-
+         try
+         {
+            using (var db = new AppDbContext())
+            {
+               db.Staff.Add(staff);
+               db.SaveChanges();
+            }
+         }
+         catch (Exception)
+         {
+            return false;
+         }
 
          return true;
         }
