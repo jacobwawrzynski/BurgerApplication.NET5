@@ -62,17 +62,30 @@
          </StackPanel>
 
          <StackPanel Width="280">
-            <!--Donload PDF-->
+            <!--Zrealizuj -->
             <Button x:Name="MakeOrderBtn"
-                       Height="70"
+                       Height="50"
                        Width="220"
-                 Margin="20,20,0,0"
+                 Margin="5,20,0,0"
                           Content="ZREALIZUJ"
                           FontSize="25"
                          FontFamily="/Fonts/#JosefinSans"
                                FontWeight="Heavy"
                        Style="{StaticResource ButtonHoverTheme_Blue}"
                  Click="MakeOrderBtn_Click"
+                          />
+
+            <!--Kasuj-->
+            <Button x:Name="RemoveOrderBtn"
+                       Height="50"
+                       Width="220"
+                 Margin="5,8,0,0"
+                          Content="RESET"
+                          FontSize="25"
+                         FontFamily="/Fonts/#JosefinSans"
+                               FontWeight="Heavy"
+                       Style="{StaticResource ButtonHoverTheme_Blue}"
+                 Click="RemoveOrderBtn_Click"
                           />
          </StackPanel>
 

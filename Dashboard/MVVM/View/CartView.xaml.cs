@@ -36,7 +36,7 @@ namespace Dashboard.MVVM.View
       {
          List<Product> productsInCart = SalesView.pr;
          Order order = new Order();
-         Product_Order product_Order = new Product_Order();
+         
          using (var db = new AppDbContext())
          {
             if (int.TryParse(ClientCodeTB.Text, out int result))
@@ -50,16 +50,25 @@ namespace Dashboard.MVVM.View
                order.Id_Discount_Code = result2;
             }
             order.Id_Staff = session.staff.Id;
-            
+            bool a = 
             DataBaseQuery.AddOrderToDataBase(order);
 
             foreach (var item in productsInCart)
             {
+               Product_Order product_Order = new Product_Order();
                product_Order.Id_Order = order.Id;
                product_Order.Id_Product = item.Id;
                DataBaseQuery.AddProduct_OrderToDataBase(product_Order);
             }
+            SalesView.pr.Clear();
+            this.Summary_Loaded(sender, e);
          }
+      }
+
+      private void RemoveOrderBtn_Click(object sender, RoutedEventArgs e)
+      {
+         SalesView.pr.Clear();
+         this.Summary_Loaded(sender, e);
       }
    }
 }

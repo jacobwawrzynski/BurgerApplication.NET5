@@ -49,12 +49,12 @@ namespace Dashboard.MVVM.View
                   var adr = (from addresses
                              in db.Addresses
                              where pr.Id_Address == addresses.Id
-                             select addresses).First();
+                             select addresses).FirstOrDefault();
 
                   var res = (from restaurants
                              in db.Restaurants
-                             where pr.Id_Restaurant == restaurants.Id_Address
-                             select restaurants).First();
+                             where pr.Id_Restaurant == restaurants.Id
+                             select restaurants).FirstOrDefault();
 
                   if (pr != null)
                   {
@@ -97,7 +97,7 @@ namespace Dashboard.MVVM.View
 
 
             employee.Login = LoginField.Text;
-            employee.Password = PasswordField.Text;
+            employee.Password = DataBaseContext.Security.Encryption.ComputeHash(PasswordField.Text, "SHA512", null);
             employee.Name = ForenameField.Text;
             employee.Last_Name = LastNameField.Text;
             employee.Pesel = PeselField.Text;
@@ -152,12 +152,12 @@ namespace Dashboard.MVVM.View
             var adr = (from addresses
                              in db.Addresses
                        where pr.Id_Address == addresses.Id
-                       select addresses).First();
+                       select addresses).FirstOrDefault();
 
             var res = (from restaurants
                             in db.Restaurants
                        where pr.Id_Restaurant == restaurants.Id_Address
-                       select restaurants).First();
+                       select restaurants).FirstOrDefault();
 
             if (pr != null)
             {
