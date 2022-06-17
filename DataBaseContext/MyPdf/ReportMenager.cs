@@ -30,7 +30,9 @@ namespace DataBaseContext.MyPdf
             this.restaurant = restaurant;
             Initialize();
         }
-
+        /// <summary>
+        /// restaurant of report
+        /// </summary>
         public Restaurant restaurant { get; private set; }
         /// <summary>
         /// create report pdf file

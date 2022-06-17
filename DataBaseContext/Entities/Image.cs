@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.Entities
 {
+    /// <summary>
+    /// Image Entity
+    /// </summary>
     public class Image
     {
+
         public int Id { get; set; }
         [Column(TypeName = "image")]
         public byte[] ImageData { get; set; }

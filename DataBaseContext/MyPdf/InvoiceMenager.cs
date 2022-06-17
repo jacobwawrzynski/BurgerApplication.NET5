@@ -16,6 +16,9 @@ namespace DataBaseContext.MyPdf
     /// </summary>
     public class InvoiceMenager
     {
+        /// <summary>
+        /// name of invoice
+        /// </summary>
         public string name = "";
         Address address;
         private decimal discount;
@@ -32,7 +35,9 @@ namespace DataBaseContext.MyPdf
             this.order = order;
             Initialize();
         }
-
+        /// <summary>
+        /// restaurant of invoice
+        /// </summary>
         public Restaurant restaurant { get; private set; }
         /// <summary>
         /// create invoice pdf file

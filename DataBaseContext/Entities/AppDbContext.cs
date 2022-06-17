@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.Entities
 {
+    /// <summary>
+    /// AppDbContext 
+    /// </summary>
     public class AppDbContext : DbContext
     {
         string connectionString_ = "Data Source=DESKTOP-FRHKQQK;Initial Catalog=BurgerAppDataBase;Integrated Security=True";

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.Entities
 {
+    /// <summary>
+    /// Address Entity
+    /// </summary>
     public class Address
     {
         public int Id { get; set; }

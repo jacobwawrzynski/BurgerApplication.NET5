@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.Entities
 {
+    /// <summary>
+    /// Order Entity
+    /// </summary>
     public class Order
     {
         public int Id { get; set; }

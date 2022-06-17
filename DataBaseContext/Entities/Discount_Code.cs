@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.Entities
 {
+    /// <summary>
+    /// Discount_Code Entity
+    /// </summary>
     public class Discount_Code
     {
         public int Id { get; set; }

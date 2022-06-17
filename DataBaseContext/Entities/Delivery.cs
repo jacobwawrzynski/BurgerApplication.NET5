@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.Entities
 {
+    /// <summary>
+    /// Delivery Entity
+    /// </summary>
     public class Delivery
     {
         public int Id { get; set; }

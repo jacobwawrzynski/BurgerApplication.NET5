@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.Entities
 {
+    /// <summary>
+    /// Staff Entity
+    /// </summary>
     public class Staff
     {
         public int Id { get; set; }

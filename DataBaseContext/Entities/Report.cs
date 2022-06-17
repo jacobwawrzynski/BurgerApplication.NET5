@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace DataBaseContext.Entities
 {
+    /// <summary> 
+    /// Report Entity
+    /// </summary>
     public class Report
     {
         public int Id { get; set; }

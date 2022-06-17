@@ -129,7 +129,10 @@ namespace DataBaseContext.MyPdf
                 return pdf;
             }
         }
-
+        /// <summary>
+        /// check if delivery is empty
+        /// </summary>
+        /// <returns></returns>
         public bool IsEmpty()
         {
             return dostawa.Count == 0;
