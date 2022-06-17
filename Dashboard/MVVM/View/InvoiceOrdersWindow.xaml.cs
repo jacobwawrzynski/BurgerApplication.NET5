@@ -60,6 +60,10 @@ namespace Dashboard.MVVM.View
             order = OrdersDG.SelectedItem as Order;
             this.Close();
         }
+        /// <summary>
+        /// returns order
+        /// </summary>
+        /// <returns>Order</returns>
         public static Order GetOrder()
         {
             return order;
