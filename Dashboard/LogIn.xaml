@@ -12,7 +12,9 @@
         Background="Transparent">
 
    <Border Background="#14151f"
-           CornerRadius="30">
+           CornerRadius="10"
+           BorderThickness="5"
+           BorderBrush="Black">
       <Grid>
          <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
