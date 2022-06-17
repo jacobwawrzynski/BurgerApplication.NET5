@@ -46,7 +46,8 @@
                      >
 
             <DataGrid x:Name="DeliveriesDG"
-                      Background="Transparent"></DataGrid>
+                      Background="Transparent"
+                      RowBackground="Transparent"></DataGrid>
             
             <Border.Background>
                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">

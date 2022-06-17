@@ -26,7 +26,17 @@ namespace Dashboard.MVVM.View
          InitializeComponent();
       }
 
+      private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+      {
+         using (var db = new AppDbContext())
+         {
+            var q = (from r
+                    in db.Reports
+                    where r.Date == datePicker.SelectedDate
+                    select r).ToList();
 
-
+            RaportDG.ItemsSource = q;
+         }
+      }
    }
 }

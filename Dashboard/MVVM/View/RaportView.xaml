@@ -14,6 +14,13 @@
          <RowDefinition/>
       </Grid.RowDefinitions>
 
+      <DatePicker x:Name="datePicker"
+                  Width="150"
+                  Height="25"
+                  SelectedDateChanged="datePicker_SelectedDateChanged">
+         
+      </DatePicker>
+      
       <!--Download PDF-->
       <Button x:Name="DownloadReportPdfBtn"
               Grid.Row="0"
@@ -41,8 +48,9 @@
                      Height="470"
                      >
 
-         <DataGrid x:Name="InvoiceDG"
-                   Background="Transparent"></DataGrid>
+         <DataGrid x:Name="RaportDG"
+                   Background="Transparent"
+                   RowBackground="Transparent"></DataGrid>
          
          <Border.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
