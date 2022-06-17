@@ -29,13 +29,13 @@ namespace DataBaseContext
          //}
 
 
-         Staff staff = random.RandomStaff.Generate();
-            staff.Login = "Admin11";
-            staff.Password = Security.Encryption.ComputeHash("Admin", "SHA512", null);
-            staff.Role = "Manager";
-            staff.Id_Restaurant = 11;
+         //Staff staff = random.RandomStaff.Generate();
+         //   staff.Login = "Admin11";
+         //   staff.Password = Security.Encryption.ComputeHash("Admin", "SHA512", null);
+         //   staff.Role = "Manager";
+         //   staff.Id_Restaurant = 11;
 
-            DataBaseQuery.AddStaffToDataBase(staff);
+         //   DataBaseQuery.AddStaffToDataBase(staff);
 
             #region invoice
             //Order order;
@@ -52,9 +52,9 @@ namespace DataBaseContext
 
             //DataBaseQuery.AddInvoiceToDataBase(invoice);
 
-            //var iv = DataBaseQuery.DownloadInvoices().Last();
+            var iv = DataBaseQuery.DownloadInvoices().Last();
 
-            //PdfMenager.SavePdf(iv.File, @$"C:\Users\jasie\Desktop\testplz\{iv.Id}-{iv.Date.Day}-{iv.Date.Month}-{iv.Date.Year}.pdf");
+            PdfMenager.SavePdf(iv.File, @$"C:\Users\Kuba\Downloads\{iv.Id}-{iv.Date.Day}-{iv.Date.Month}-{iv.Date.Year}.pdf");
             #endregion
 
             #region report
@@ -70,40 +70,40 @@ namespace DataBaseContext
             //Report report = new Report() { File = PdfMenager.PdfToByteArray(rap), Id_Restaurant = reportMenager.restaurant.Id };
             //DataBaseQuery.AddReportsToDataBase(report);
 
-            //var repfromdb = PdfMenager.ByteArrayToPdf(DataBaseQuery.DownloadReports().Last().File);
+            var repfromdb = PdfMenager.ByteArrayToPdf(DataBaseQuery.DownloadReports().Last().File);
 
-            //PdfMenager.SavePdf(repfromdb, @$"C:\Users\jasie\Desktop\testplz", "raporcikzbazy");
-            ////PdfMenager.SavePdf(rap, @$"C:\Users\jasie\Desktop\testplz", "raporcik");
-            #endregion
+            PdfMenager.SavePdf(repfromdb, @$"C:\Users\Kuba\Downloads", "raporcikzbazy");
+         //PdfMenager.SavePdf(rap, @$"C:\Users\jasie\Desktop\testplz", "raporcik");
+         #endregion
 
-            #region Delivery
-            //Restaurant restaurant2;
-            //using (var db = new AppDbContext())
-            //{
-            //    restaurant2 = (from r in db.Restaurants
-            //                  where r.Id == 2
-            //                  select r).FirstOrDefault();
-            //}
-            //DeliveryMenager delivaryMenager = new DeliveryMenager(restaurant2);
-            //delivaryMenager.Add("bułki", 100);
-            //delivaryMenager.Add("Ser", 1);
-            //delivaryMenager.Add("Nachosy", 2);
-            //delivaryMenager.Add("Warzywa", 3);
+         #region Delivery
+         //Restaurant restaurant2;
+         //using (var db = new AppDbContext())
+         //{
+         //    restaurant2 = (from r in db.Restaurants
+         //                  where r.Id == 2
+         //                  select r).FirstOrDefault();
+         //}
+         //DeliveryMenager delivaryMenager = new DeliveryMenager(restaurant2);
+         //delivaryMenager.Add("bułki", 100);
+         //delivaryMenager.Add("Ser", 1);
+         //delivaryMenager.Add("Nachosy", 2);
+         //delivaryMenager.Add("Warzywa", 3);
 
-            //var pdf = delivaryMenager.GeneratePdf();
+         //var pdf = delivaryMenager.GeneratePdf();
 
-            //Delivery delivery = new Delivery() { File = PdfMenager.PdfToByteArray(pdf), Id_Restaurant = delivaryMenager.restaurant.Id };
-            //DataBaseQuery.AddDeliveryToDataBase(delivery);
+         //Delivery delivery = new Delivery() { File = PdfMenager.PdfToByteArray(pdf), Id_Restaurant = delivaryMenager.restaurant.Id };
+         //DataBaseQuery.AddDeliveryToDataBase(delivery);
 
-            //var pdfzbazy = DataBaseQuery.DownloadDelivery().Last().File;
-            //PdfMenager.SavePdf(pdfzbazy, @$"C:\Users\jasie\Desktop\testplz", "dostawa");
-            #endregion
+         var pdfzbazy = DataBaseQuery.DownloadDelivery().Last().File;
+         PdfMenager.SavePdf(pdfzbazy, @$"C:\Users\Kuba\Downloads", "dostawa");
+         #endregion
 
-            #region image
+         #region image
 
-            //System.Drawing.Image image = System.Drawing.Image.FromFile(@"C:\Users\jasie\Desktop\brgmain.png");
+         System.Drawing.Image image = System.Drawing.Image.FromFile(@"D:\BurgerApplication.NET5\Dashboard\Images\brgmain.png");
 
-            //DataBaseQuery.AddImageToDataBase(new Entities.Image() { ImageData = PdfMenager.ImageToByteArray(image),Alt_Text="burger.png" });
+            DataBaseQuery.AddImageToDataBase(new Entities.Image() { ImageData = PdfMenager.ImageToByteArray(image),Alt_Text="burger.png" });
             #endregion
         }
     }
