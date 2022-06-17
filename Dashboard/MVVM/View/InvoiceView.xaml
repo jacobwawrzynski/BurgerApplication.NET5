@@ -81,8 +81,9 @@
                      Height="470"
                      >
 
-            <DataGrid x:Name="InvoiceDG"
-                   Background="Transparent"></DataGrid>
+         <DataGrid x:Name="InvoiceDG"
+                   Background="Transparent"
+                   RowBackground="Transparent"></DataGrid>
 
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
