@@ -18,7 +18,9 @@
    </Window.DataContext>
 
    <Border Background="#14151f"
-           CornerRadius="40">
+           CornerRadius="10"
+           BorderThickness="5"
+           BorderBrush="Black">
       <Grid>
          <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
