@@ -63,20 +63,9 @@
 
          <StackPanel Width="280">
             <!--Donload PDF-->
-            <Button x:Name="DownloadInvoicePdfBtn"
-                       VerticalAlignment="Center"
-                          Margin="20,5,0,0"
-                       Height="60"
-                       Width="190"
-                          Content="FAKTURA PDF"
-                          FontSize="25"
-                         FontFamily="/Fonts/#JosefinSans"
-                               FontWeight="Heavy"
-                       Style="{StaticResource ButtonHoverTheme_Blue}"
-                          />
             <Button x:Name="MakeOrderBtn"
-                       Height="60"
-                       Width="190"
+                       Height="70"
+                       Width="220"
                  Margin="20,20,0,0"
                           Content="ZREALIZUJ"
                           FontSize="25"
@@ -128,6 +117,7 @@
             </Border.Clip>
 
          </Border>
+         
          <!--Summary grid-->
          <Border Width="880"
                      Height="350"
